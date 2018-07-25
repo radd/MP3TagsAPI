@@ -17,13 +17,13 @@ import javax.swing.filechooser.FileNameExtensionFilter;
 public class MainWindow extends javax.swing.JFrame {
 
 
-    private JPanel filePanel;
+    private FilePanel filePanel;
     /**
      * Creates new form MainWindow
      */
     public MainWindow() {
         initComponents();
-        filePanel = new FilePanel();
+        filePanel = new FilePanel();      
     }
 
     /**
@@ -43,6 +43,9 @@ public class MainWindow extends javax.swing.JFrame {
         fileScrollPane = new javax.swing.JScrollPane();
         filePanelContainer = new javax.swing.JPanel();
         filePaneLabel = new javax.swing.JLabel();
+        editTagsBtn = new javax.swing.JButton();
+        cancelEditBtn = new javax.swing.JButton();
+        saveFileBtn = new javax.swing.JButton();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
         jMenuItem1 = new javax.swing.JMenuItem();
@@ -65,9 +68,9 @@ public class MainWindow extends javax.swing.JFrame {
         model = new DefaultListModel();
         fileList.setModel(model);
         fileList.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
-        fileList.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                fileListMouseClicked(evt);
+        fileList.addListSelectionListener(new javax.swing.event.ListSelectionListener() {
+            public void valueChanged(javax.swing.event.ListSelectionEvent evt) {
+                fileListValueChanged(evt);
             }
         });
         fileListScrollPane.setViewportView(fileList);
@@ -82,6 +85,25 @@ public class MainWindow extends javax.swing.JFrame {
         fileScrollPane.setViewportView(filePanelContainer);
 
         filePaneLabel.setText("File info:");
+
+        editTagsBtn.setText("Edit file tags");
+        editTagsBtn.setEnabled(false);
+        editTagsBtn.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                editTagsBtnMouseClicked(evt);
+            }
+        });
+
+        cancelEditBtn.setText("Cancel");
+        cancelEditBtn.setEnabled(false);
+        cancelEditBtn.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                cancelEditBtnMouseClicked(evt);
+            }
+        });
+
+        saveFileBtn.setText("Save file");
+        saveFileBtn.setEnabled(false);
 
         jMenu1.setText("File");
 
@@ -112,8 +134,17 @@ public class MainWindow extends javax.swing.JFrame {
                             .addComponent(fileListLabel))
                         .addGap(61, 61, 61)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(filePaneLabel)
-                            .addComponent(fileScrollPane, javax.swing.GroupLayout.DEFAULT_SIZE, 305, Short.MAX_VALUE))))
+                            .addComponent(fileScrollPane)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(filePaneLabel)
+                                .addGap(0, 0, Short.MAX_VALUE))
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(editTagsBtn)
+                                .addGap(15, 15, 15)
+                                .addComponent(saveFileBtn)
+                                .addGap(15, 15, 15)
+                                .addComponent(cancelEditBtn)
+                                .addGap(46, 46, 46)))))
                 .addGap(18, 18, 18))
         );
         layout.setVerticalGroup(
@@ -129,27 +160,21 @@ public class MainWindow extends javax.swing.JFrame {
                     .addComponent(filePaneLabel))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(fileScrollPane)
-                    .addComponent(fileListScrollPane, javax.swing.GroupLayout.DEFAULT_SIZE, 290, Short.MAX_VALUE))
-                .addGap(20, 20, 20))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(fileListScrollPane, javax.swing.GroupLayout.DEFAULT_SIZE, 290, Short.MAX_VALUE)
+                        .addGap(20, 20, 20))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(fileScrollPane)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(editTagsBtn)
+                            .addComponent(cancelEditBtn)
+                            .addComponent(saveFileBtn))
+                        .addGap(28, 28, 28))))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
-    private void fileListMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_fileListMouseClicked
-        JList fileList = (JList)evt.getSource();
-	System.out.println(" " + fileList.getSelectedIndex());
-        if(fileList.getSelectedIndex() >= 0)
-        {
-            setFilePaneHeader(" " + files[fileList.getSelectedIndex()].getName());
-            //fileScrollPane.setViewportView(filePanel);
-            filePanelContainer.add(filePanel);
-        }
-
-        
-        //System.err.println("clicked");
-    }//GEN-LAST:event_fileListMouseClicked
 
     private void chooseFilesBtnMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_chooseFilesBtnMouseClicked
         JFileChooser chooser = new JFileChooser("D:\\Woles109\\MP3");
@@ -161,6 +186,13 @@ public class MainWindow extends javax.swing.JFrame {
             files= chooser.getSelectedFiles();
             fileListHeaderLabel.setText(" " + files.length + " files");
             setFilePaneHeader(FILE_HEADER_TEXT);
+            filePanelContainer.removeAll();
+            filePanelContainer.revalidate();
+            filePanelContainer.repaint();
+            
+            editTagsBtn.setEnabled(false);
+            saveFileBtn.setEnabled(false);
+            cancelEditBtn.setEnabled(false);
             
             model.removeAllElements();
             for(File file : files) {
@@ -170,10 +202,45 @@ public class MainWindow extends javax.swing.JFrame {
         }    
     }//GEN-LAST:event_chooseFilesBtnMouseClicked
 
+    private void fileListValueChanged(javax.swing.event.ListSelectionEvent evt) {//GEN-FIRST:event_fileListValueChanged
+        if (!evt.getValueIsAdjusting()) { // prevents double events
+            JList fileList = (JList)evt.getSource();
+            System.out.println(" " + fileList.getSelectedIndex());
+            if(fileList.getSelectedIndex() >= 0)
+            {
+                setFilePaneHeader(" " + files[fileList.getSelectedIndex()].getName());
+                //fileScrollPane.setViewportView(filePanel);
+                filePanel.setFile(files[fileList.getSelectedIndex()]);
+                
+                filePanelContainer.removeAll();
+                filePanelContainer.revalidate();
+                filePanelContainer.repaint();
+                filePanelContainer.add(filePanel);
+                editTagsBtn.setEnabled(true);
+            }
+        }
+    }//GEN-LAST:event_fileListValueChanged
+
+    private void editTagsBtnMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_editTagsBtnMouseClicked
+        filePanel.enableEdit(true);
+        editTagsBtn.setEnabled(false);
+        saveFileBtn.setEnabled(true);
+        cancelEditBtn.setEnabled(true);
+    }//GEN-LAST:event_editTagsBtnMouseClicked
+
+    private void cancelEditBtnMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_cancelEditBtnMouseClicked
+        filePanel.enableEdit(false);
+        editTagsBtn.setEnabled(true);
+        saveFileBtn.setEnabled(false);
+        cancelEditBtn.setEnabled(false);
+    }//GEN-LAST:event_cancelEditBtnMouseClicked
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton cancelEditBtn;
     private javax.swing.JButton chooseFilesBtn;
     private javax.swing.JLabel chooseFilesLabel;
+    private javax.swing.JButton editTagsBtn;
     private javax.swing.JList<String> fileList;
     private javax.swing.JLabel fileListLabel;
     private javax.swing.JScrollPane fileListScrollPane;
@@ -187,6 +254,7 @@ public class MainWindow extends javax.swing.JFrame {
     private javax.swing.JMenu jMenu2;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JMenuItem jMenuItem1;
+    private javax.swing.JButton saveFileBtn;
     // End of variables declaration//GEN-END:variables
 
     private File[] files = null;

@@ -5,6 +5,17 @@
  */
 package io.github.radd;
 
+import com.mpatric.mp3agic.ID3v2;
+import com.mpatric.mp3agic.InvalidDataException;
+import com.mpatric.mp3agic.Mp3File;
+import com.mpatric.mp3agic.UnsupportedTagException;
+import java.awt.Color;
+import java.io.File;
+import java.io.IOException;
+import javax.swing.BorderFactory;
+import javax.swing.JTextField;
+import javax.swing.border.Border;
+
 /**
  *
  * @author Piotr
@@ -47,11 +58,11 @@ public class FilePanel extends javax.swing.JPanel {
         originalArtistText = new javax.swing.JTextField();
         publisherText = new javax.swing.JTextField();
         encoderText = new javax.swing.JTextField();
-        composerText6 = new javax.swing.JTextField();
+        composerText = new javax.swing.JTextField();
         url = new javax.swing.JTextField();
         copyright = new javax.swing.JTextField();
         albumArtist = new javax.swing.JTextField();
-        oroginalArtist = new javax.swing.JTextField();
+        originalArtist = new javax.swing.JTextField();
         publisher = new javax.swing.JTextField();
         composer = new javax.swing.JTextField();
 
@@ -59,7 +70,7 @@ public class FilePanel extends javax.swing.JPanel {
         setBorder(javax.swing.BorderFactory.createEmptyBorder(10, 10, 10, 10));
         setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         java.awt.GridBagLayout layout = new java.awt.GridBagLayout();
-        layout.columnWidths = new int[] {0, 15, 0, 15, 0};
+        layout.columnWidths = new int[] {0, 12, 0, 12, 0};
         layout.rowHeights = new int[] {0, 11, 0, 11, 0, 11, 0, 11, 0, 11, 0, 11, 0, 11, 0, 11, 0, 11, 0, 11, 0, 11, 0, 11, 0};
         setLayout(layout);
 
@@ -70,6 +81,7 @@ public class FilePanel extends javax.swing.JPanel {
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 4;
+        gridBagConstraints.ipadx = 1;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.EAST;
         add(artistText, gridBagConstraints);
 
@@ -80,6 +92,7 @@ public class FilePanel extends javax.swing.JPanel {
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 6;
+        gridBagConstraints.ipadx = 1;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.EAST;
         add(albumText, gridBagConstraints);
 
@@ -90,6 +103,7 @@ public class FilePanel extends javax.swing.JPanel {
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 2;
+        gridBagConstraints.ipadx = 1;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.EAST;
         add(titleText, gridBagConstraints);
 
@@ -100,6 +114,7 @@ public class FilePanel extends javax.swing.JPanel {
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 8;
+        gridBagConstraints.ipadx = 1;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.EAST;
         add(yearText, gridBagConstraints);
 
@@ -110,6 +125,7 @@ public class FilePanel extends javax.swing.JPanel {
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 10;
+        gridBagConstraints.ipadx = 1;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.EAST;
         add(genreText, gridBagConstraints);
 
@@ -119,6 +135,7 @@ public class FilePanel extends javax.swing.JPanel {
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 2;
         gridBagConstraints.gridy = 2;
+        gridBagConstraints.ipadx = 1;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.LINE_START;
         add(title, gridBagConstraints);
 
@@ -129,6 +146,7 @@ public class FilePanel extends javax.swing.JPanel {
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 0;
+        gridBagConstraints.ipadx = 1;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.EAST;
         add(fileNameText, gridBagConstraints);
 
@@ -139,6 +157,7 @@ public class FilePanel extends javax.swing.JPanel {
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 22;
+        gridBagConstraints.ipadx = 1;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.EAST;
         add(urlText, gridBagConstraints);
 
@@ -148,6 +167,7 @@ public class FilePanel extends javax.swing.JPanel {
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 2;
         gridBagConstraints.gridy = 0;
+        gridBagConstraints.ipadx = 1;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.LINE_START;
         add(filename, gridBagConstraints);
 
@@ -157,6 +177,7 @@ public class FilePanel extends javax.swing.JPanel {
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 2;
         gridBagConstraints.gridy = 24;
+        gridBagConstraints.ipadx = 1;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.LINE_START;
         add(encoder, gridBagConstraints);
 
@@ -166,6 +187,7 @@ public class FilePanel extends javax.swing.JPanel {
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 2;
         gridBagConstraints.gridy = 6;
+        gridBagConstraints.ipadx = 1;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.LINE_START;
         add(album, gridBagConstraints);
 
@@ -175,6 +197,7 @@ public class FilePanel extends javax.swing.JPanel {
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 2;
         gridBagConstraints.gridy = 4;
+        gridBagConstraints.ipadx = 1;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.LINE_START;
         add(artist, gridBagConstraints);
 
@@ -184,6 +207,7 @@ public class FilePanel extends javax.swing.JPanel {
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 2;
         gridBagConstraints.gridy = 8;
+        gridBagConstraints.ipadx = 1;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.LINE_START;
         add(year, gridBagConstraints);
 
@@ -193,6 +217,7 @@ public class FilePanel extends javax.swing.JPanel {
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 2;
         gridBagConstraints.gridy = 10;
+        gridBagConstraints.ipadx = 1;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.LINE_START;
         add(genre, gridBagConstraints);
 
@@ -203,6 +228,7 @@ public class FilePanel extends javax.swing.JPanel {
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 20;
+        gridBagConstraints.ipadx = 1;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.EAST;
         add(copyrightText, gridBagConstraints);
 
@@ -213,6 +239,7 @@ public class FilePanel extends javax.swing.JPanel {
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 18;
+        gridBagConstraints.ipadx = 1;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.EAST;
         add(albumArtistText, gridBagConstraints);
 
@@ -223,6 +250,7 @@ public class FilePanel extends javax.swing.JPanel {
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 16;
+        gridBagConstraints.ipadx = 1;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.EAST;
         add(originalArtistText, gridBagConstraints);
 
@@ -233,6 +261,7 @@ public class FilePanel extends javax.swing.JPanel {
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 14;
+        gridBagConstraints.ipadx = 1;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.EAST;
         add(publisherText, gridBagConstraints);
 
@@ -243,18 +272,20 @@ public class FilePanel extends javax.swing.JPanel {
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 24;
+        gridBagConstraints.ipadx = 1;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.EAST;
         add(encoderText, gridBagConstraints);
 
-        composerText6.setEditable(false);
-        composerText6.setText("Composer:");
-        composerText6.setBorder(null);
-        composerText6.setOpaque(false);
+        composerText.setEditable(false);
+        composerText.setText("Composer:");
+        composerText.setBorder(null);
+        composerText.setOpaque(false);
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 12;
+        gridBagConstraints.ipadx = 1;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.EAST;
-        add(composerText6, gridBagConstraints);
+        add(composerText, gridBagConstraints);
 
         url.setEditable(false);
         url.setBorder(null);
@@ -262,6 +293,7 @@ public class FilePanel extends javax.swing.JPanel {
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 2;
         gridBagConstraints.gridy = 22;
+        gridBagConstraints.ipadx = 1;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.LINE_START;
         add(url, gridBagConstraints);
 
@@ -271,6 +303,7 @@ public class FilePanel extends javax.swing.JPanel {
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 2;
         gridBagConstraints.gridy = 20;
+        gridBagConstraints.ipadx = 1;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.LINE_START;
         add(copyright, gridBagConstraints);
 
@@ -280,17 +313,19 @@ public class FilePanel extends javax.swing.JPanel {
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 2;
         gridBagConstraints.gridy = 18;
+        gridBagConstraints.ipadx = 1;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.LINE_START;
         add(albumArtist, gridBagConstraints);
 
-        oroginalArtist.setEditable(false);
-        oroginalArtist.setBorder(null);
-        oroginalArtist.setOpaque(false);
+        originalArtist.setEditable(false);
+        originalArtist.setBorder(null);
+        originalArtist.setOpaque(false);
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 2;
         gridBagConstraints.gridy = 16;
+        gridBagConstraints.ipadx = 1;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.LINE_START;
-        add(oroginalArtist, gridBagConstraints);
+        add(originalArtist, gridBagConstraints);
 
         publisher.setEditable(false);
         publisher.setBorder(null);
@@ -298,6 +333,7 @@ public class FilePanel extends javax.swing.JPanel {
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 2;
         gridBagConstraints.gridy = 14;
+        gridBagConstraints.ipadx = 1;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.LINE_START;
         add(publisher, gridBagConstraints);
 
@@ -307,6 +343,7 @@ public class FilePanel extends javax.swing.JPanel {
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 2;
         gridBagConstraints.gridy = 12;
+        gridBagConstraints.ipadx = 1;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.LINE_START;
         add(composer, gridBagConstraints);
 
@@ -322,7 +359,7 @@ public class FilePanel extends javax.swing.JPanel {
     private javax.swing.JTextField artist;
     private javax.swing.JTextField artistText;
     private javax.swing.JTextField composer;
-    private javax.swing.JTextField composerText6;
+    private javax.swing.JTextField composerText;
     private javax.swing.JTextField copyright;
     private javax.swing.JTextField copyrightText;
     private javax.swing.JTextField encoder;
@@ -331,8 +368,8 @@ public class FilePanel extends javax.swing.JPanel {
     private javax.swing.JTextField filename;
     private javax.swing.JTextField genre;
     private javax.swing.JTextField genreText;
+    private javax.swing.JTextField originalArtist;
     private javax.swing.JTextField originalArtistText;
-    private javax.swing.JTextField oroginalArtist;
     private javax.swing.JTextField publisher;
     private javax.swing.JTextField publisherText;
     private javax.swing.JTextField title;
@@ -342,4 +379,79 @@ public class FilePanel extends javax.swing.JPanel {
     private javax.swing.JTextField year;
     private javax.swing.JTextField yearText;
     // End of variables declaration//GEN-END:variables
+
+    
+    private Mp3File mp3file;
+    
+    public void setFile(File file) { 
+        try {
+            mp3file = new Mp3File(file);
+        } catch (IOException e) {
+            e.printStackTrace();
+        } catch (UnsupportedTagException e) {
+            e.printStackTrace();
+        } catch (InvalidDataException e) {
+            e.printStackTrace();
+        }
+
+        setInfo();
+    }
+
+    private void setInfo() {
+        if(mp3file != null && mp3file.hasId3v2Tag()) { 
+            ID3v2 id3v2Tag = mp3file.getId3v2Tag();
+            
+            filename.setText(mp3file.getFilename());
+            title.setText(id3v2Tag.getTitle());
+            artist.setText(id3v2Tag.getArtist());
+            album.setText(id3v2Tag.getAlbum());
+            year.setText(id3v2Tag.getYear());
+            genre.setText(id3v2Tag.getGenreDescription());
+            composer.setText(id3v2Tag.getComposer());
+            publisher.setText(id3v2Tag.getPublisher());
+            originalArtist.setText(id3v2Tag.getOriginalArtist());
+            albumArtist.setText(id3v2Tag.getAlbumArtist());
+            copyright.setText(id3v2Tag.getCopyright());
+            url.setText(id3v2Tag.getUrl());
+            encoder.setText(id3v2Tag.getEncoder());
+            
+        }
+    }
+    
+    public void enableEdit(boolean b) {
+        toggleEditTextField(filename, b);
+        toggleEditTextField(title, b);
+        toggleEditTextField(artist, b);
+        toggleEditTextField(album, b);
+        toggleEditTextField(year, b);
+        toggleEditTextField(genre, b);
+        toggleEditTextField(composer, b);
+        toggleEditTextField(publisher, b);
+        toggleEditTextField(originalArtist, b);
+        toggleEditTextField(albumArtist, b);
+        toggleEditTextField(copyright, b);
+        toggleEditTextField(url, b);
+        toggleEditTextField(encoder, b);
+        
+        if(!b)
+            setInfo();
+        
+        revalidate();
+        repaint();
+       
+    }
+    
+    private void toggleEditTextField(JTextField f,  boolean b) {
+        if(b){
+            f.setEditable(b);
+            f.setColumns(50);
+            f.setBorder(BorderFactory.createCompoundBorder(
+            BorderFactory.createLineBorder(Color.GRAY, 1), BorderFactory.createEmptyBorder(3, 5, 3, 5)));
+        }
+        else {
+            f.setEditable(b);
+            f.setColumns(0);
+            f.setBorder(BorderFactory.createEmptyBorder(1, 1, 1, 1));       
+        }
+    } 
 }
