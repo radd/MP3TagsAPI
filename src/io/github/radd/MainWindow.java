@@ -1,11 +1,13 @@
 package io.github.radd;
 
+import java.awt.BorderLayout;
 import java.awt.Component;
 import java.io.File;
 import javax.swing.DefaultListModel;
 import javax.swing.JFileChooser;
 import javax.swing.JLabel;
 import javax.swing.JList;
+import javax.swing.JPanel;
 import javax.swing.filechooser.FileNameExtensionFilter;
 
 /**
@@ -15,11 +17,13 @@ import javax.swing.filechooser.FileNameExtensionFilter;
 public class MainWindow extends javax.swing.JFrame {
 
 
+    private JPanel filePanel;
     /**
      * Creates new form MainWindow
      */
     public MainWindow() {
         initComponents();
+        filePanel = new FilePanel();
     }
 
     /**
@@ -37,6 +41,7 @@ public class MainWindow extends javax.swing.JFrame {
         fileList = new javax.swing.JList<>();
         fileListLabel = new javax.swing.JLabel();
         fileScrollPane = new javax.swing.JScrollPane();
+        filePanelContainer = new javax.swing.JPanel();
         filePaneLabel = new javax.swing.JLabel();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
@@ -71,6 +76,10 @@ public class MainWindow extends javax.swing.JFrame {
 
         fileHeaderLabel = new JLabel(FILE_HEADER_TEXT);
         fileScrollPane.setColumnHeaderView(fileHeaderLabel);
+
+        filePanelContainer.setBackground(new java.awt.Color(255, 255, 255));
+        filePanelContainer.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.LEFT));
+        fileScrollPane.setViewportView(filePanelContainer);
 
         filePaneLabel.setText("File info:");
 
@@ -131,7 +140,12 @@ public class MainWindow extends javax.swing.JFrame {
     private void fileListMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_fileListMouseClicked
         JList fileList = (JList)evt.getSource();
 	System.out.println(" " + fileList.getSelectedIndex());
-        setFilePaneHeader(" " + files[fileList.getSelectedIndex()].getName());
+        if(fileList.getSelectedIndex() >= 0)
+        {
+            setFilePaneHeader(" " + files[fileList.getSelectedIndex()].getName());
+            //fileScrollPane.setViewportView(filePanel);
+            filePanelContainer.add(filePanel);
+        }
 
         
         //System.err.println("clicked");
@@ -165,6 +179,7 @@ public class MainWindow extends javax.swing.JFrame {
     private javax.swing.JScrollPane fileListScrollPane;
     private JLabel fileListHeaderLabel;
     private javax.swing.JLabel filePaneLabel;
+    private javax.swing.JPanel filePanelContainer;
     private javax.swing.JScrollPane fileScrollPane;
     private JLabel fileHeaderLabel;
     private final String FILE_HEADER_TEXT = " Select a file...";
