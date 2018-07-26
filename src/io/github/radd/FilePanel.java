@@ -6,12 +6,20 @@
 package io.github.radd;
 
 import com.mpatric.mp3agic.ID3v2;
+import com.mpatric.mp3agic.ID3v24Tag;
 import com.mpatric.mp3agic.InvalidDataException;
 import com.mpatric.mp3agic.Mp3File;
+import com.mpatric.mp3agic.NotSupportedException;
 import com.mpatric.mp3agic.UnsupportedTagException;
 import java.awt.Color;
 import java.io.File;
 import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
+import java.util.Random;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.BorderFactory;
 import javax.swing.JTextField;
 import javax.swing.border.Border;
@@ -382,6 +390,8 @@ public class FilePanel extends javax.swing.JPanel {
 
     
     private Mp3File mp3file;
+    private boolean editable;
+    private File file;
     
     public void setFile(File file) { 
         try {
@@ -393,7 +403,9 @@ public class FilePanel extends javax.swing.JPanel {
         } catch (InvalidDataException e) {
             e.printStackTrace();
         }
-
+        
+        if(editable)
+            enableEdit(false);
         setInfo();
     }
 
@@ -401,7 +413,7 @@ public class FilePanel extends javax.swing.JPanel {
         if(mp3file != null && mp3file.hasId3v2Tag()) { 
             ID3v2 id3v2Tag = mp3file.getId3v2Tag();
             
-            filename.setText(mp3file.getFilename());
+            filename.setText(getFilename(mp3file.getFilename()));
             title.setText(id3v2Tag.getTitle());
             artist.setText(id3v2Tag.getArtist());
             album.setText(id3v2Tag.getAlbum());
@@ -418,7 +430,20 @@ public class FilePanel extends javax.swing.JPanel {
         }
     }
     
+    private String getFilename(String fileFullPath) {
+        Path p = Paths.get(fileFullPath);
+        String filename = p.getFileName().toString();
+        
+        if (filename.indexOf(".") > 0) {
+            return filename.substring(0, filename.lastIndexOf("."));
+        } else {
+            return filename;
+        }
+    }
+    
     public void enableEdit(boolean b) {
+        editable = b;
+        
         toggleEditTextField(filename, b);
         toggleEditTextField(title, b);
         toggleEditTextField(artist, b);
@@ -454,4 +479,91 @@ public class FilePanel extends javax.swing.JPanel {
             f.setBorder(BorderFactory.createEmptyBorder(1, 1, 1, 1));       
         }
     } 
+    
+    public void saveFile() {
+        if (mp3file != null) {
+            String path = null;
+            try {
+                File newFile = backUpFile();
+                deleteCurrFile();
+                Mp3File mp3f = new Mp3File(newFile);
+                saveId3v2Tags(mp3f);
+                path = saveMP3File(mp3f);
+                
+            } catch (IOException ex) {
+                System.out.println("File save failed. Msg: " + ex.getMessage());
+            } catch (NotSupportedException ex) {
+                Logger.getLogger(FilePanel.class.getName()).log(Level.SEVERE, null, ex);
+            } catch (UnsupportedTagException ex) {
+                Logger.getLogger(FilePanel.class.getName()).log(Level.SEVERE, null, ex);
+            } catch (InvalidDataException ex) {
+                Logger.getLogger(FilePanel.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            
+            if(path != null) {
+                setFile(new File(path));
+            }
+                
+            
+        }
+    }
+    
+    private File backUpFile() throws IOException {
+        String path = System.getProperty("user.home") + File.separator + "MP3Tags_backup";
+        File dir = new File(path);
+        if (dir.exists() || dir.mkdirs()) {
+            File source = new File(mp3file.getFilename());
+            File dest = new File(dir.getAbsolutePath() + File.separator + getFilename(mp3file.getFilename()) + "_backup_" + System.currentTimeMillis() + ".mp3");
+            Files.copy(source.toPath(), dest.toPath());
+            return dest;
+        } else {
+            throw new IOException("Folder not exist");
+        }
+    }
+    
+    private void deleteCurrFile() throws IOException {
+        File file = new File(mp3file.getFilename());
+        if (!file.delete()) {
+            throw new IOException("Failed to delete the file");
+        }
+    }
+    
+    private void saveId3v2Tags(Mp3File mp3f) {
+        ID3v2 id3v2Tag;
+        if (mp3f.hasId3v2Tag()) {
+            id3v2Tag = mp3f.getId3v2Tag();
+        } else {
+            // mp3 does not have an ID3v2 tag, let's create one..
+            id3v2Tag = new ID3v24Tag();
+            mp3f.setId3v2Tag(id3v2Tag);
+        }
+        
+        saveTags(id3v2Tag);
+    }
+    
+    private void saveTags(ID3v2 id3v2Tag) {
+        id3v2Tag.setTitle(title.getText());
+        id3v2Tag.setArtist(artist.getText());
+        id3v2Tag.setAlbum(album.getText());
+        id3v2Tag.setYear(year.getText());
+        id3v2Tag.setGenreDescription(genre.getText());       
+        id3v2Tag.setComposer(composer.getText());
+        id3v2Tag.setPublisher(publisher.getText());
+        id3v2Tag.setOriginalArtist(originalArtist.getText());
+        id3v2Tag.setAlbumArtist(albumArtist.getText());
+        id3v2Tag.setCopyright(copyright.getText());
+        id3v2Tag.setUrl(url.getText());
+        id3v2Tag.setEncoder(encoder.getText());       
+    }
+
+    private String saveMP3File(Mp3File mp3f) throws IOException, NotSupportedException {
+        String newFilename = filename.getText(); // check valid
+        Path p = Paths.get(mp3file.getFilename());
+        String fileRoot = p.getParent().toString();
+        String path = fileRoot + File.separator + newFilename + ".mp3";
+        mp3f.save(path);  
+        return path;
+    }
+    
+    
 }

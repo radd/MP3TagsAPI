@@ -88,22 +88,27 @@ public class MainWindow extends javax.swing.JFrame {
 
         editTagsBtn.setText("Edit file tags");
         editTagsBtn.setEnabled(false);
-        editTagsBtn.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                editTagsBtnMouseClicked(evt);
+        editTagsBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                editTagsBtnActionPerformed(evt);
             }
         });
 
         cancelEditBtn.setText("Cancel");
         cancelEditBtn.setEnabled(false);
-        cancelEditBtn.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                cancelEditBtnMouseClicked(evt);
+        cancelEditBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cancelEditBtnActionPerformed(evt);
             }
         });
 
         saveFileBtn.setText("Save file");
         saveFileBtn.setEnabled(false);
+        saveFileBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                saveFileBtnActionPerformed(evt);
+            }
+        });
 
         jMenu1.setText("File");
 
@@ -201,7 +206,7 @@ public class MainWindow extends javax.swing.JFrame {
             }
         }    
     }//GEN-LAST:event_chooseFilesBtnMouseClicked
-
+        
     private void fileListValueChanged(javax.swing.event.ListSelectionEvent evt) {//GEN-FIRST:event_fileListValueChanged
         if (!evt.getValueIsAdjusting()) { // prevents double events
             JList fileList = (JList)evt.getSource();
@@ -217,23 +222,33 @@ public class MainWindow extends javax.swing.JFrame {
                 filePanelContainer.repaint();
                 filePanelContainer.add(filePanel);
                 editTagsBtn.setEnabled(true);
+                
+                //TODO scroll to top
             }
         }
     }//GEN-LAST:event_fileListValueChanged
 
-    private void editTagsBtnMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_editTagsBtnMouseClicked
+    private void editTagsBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_editTagsBtnActionPerformed
         filePanel.enableEdit(true);
         editTagsBtn.setEnabled(false);
         saveFileBtn.setEnabled(true);
         cancelEditBtn.setEnabled(true);
-    }//GEN-LAST:event_editTagsBtnMouseClicked
+    }//GEN-LAST:event_editTagsBtnActionPerformed
 
-    private void cancelEditBtnMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_cancelEditBtnMouseClicked
+    private void cancelEditBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cancelEditBtnActionPerformed
         filePanel.enableEdit(false);
         editTagsBtn.setEnabled(true);
         saveFileBtn.setEnabled(false);
         cancelEditBtn.setEnabled(false);
-    }//GEN-LAST:event_cancelEditBtnMouseClicked
+    }//GEN-LAST:event_cancelEditBtnActionPerformed
+
+    private void saveFileBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_saveFileBtnActionPerformed
+        filePanel.saveFile();
+        editTagsBtn.setEnabled(true);
+        saveFileBtn.setEnabled(false);
+        cancelEditBtn.setEnabled(false);
+        //TODO refresh jList -> file not found
+    }//GEN-LAST:event_saveFileBtnActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
