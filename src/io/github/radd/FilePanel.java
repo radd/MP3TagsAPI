@@ -391,9 +391,9 @@ public class FilePanel extends javax.swing.JPanel {
     
     private Mp3File mp3file;
     private boolean editable;
-    private File file;
+    private int id;
     
-    public void setFile(File file) { 
+    public void setFile(File file, int index) { 
         try {
             mp3file = new Mp3File(file);
         } catch (IOException e) {
@@ -404,11 +404,12 @@ public class FilePanel extends javax.swing.JPanel {
             e.printStackTrace();
         }
         
+        id = index;
         if(editable)
             enableEdit(false);
         setInfo();
     }
-
+   
     private void setInfo() {
         if(mp3file != null && mp3file.hasId3v2Tag()) { 
             ID3v2 id3v2Tag = mp3file.getId3v2Tag();
@@ -418,7 +419,7 @@ public class FilePanel extends javax.swing.JPanel {
             artist.setText(id3v2Tag.getArtist());
             album.setText(id3v2Tag.getAlbum());
             year.setText(id3v2Tag.getYear());
-            genre.setText(id3v2Tag.getGenreDescription());
+            //genre.setText(id3v2Tag.getGenreDescription());
             composer.setText(id3v2Tag.getComposer());
             publisher.setText(id3v2Tag.getPublisher());
             originalArtist.setText(id3v2Tag.getOriginalArtist());
@@ -429,10 +430,9 @@ public class FilePanel extends javax.swing.JPanel {
             
         }
     }
-    
+
     private String getFilename(String fileFullPath) {
-        Path p = Paths.get(fileFullPath);
-        String filename = p.getFileName().toString();
+        String filename = getFullFilename(fileFullPath);
         
         if (filename.indexOf(".") > 0) {
             return filename.substring(0, filename.lastIndexOf("."));
@@ -441,6 +441,23 @@ public class FilePanel extends javax.swing.JPanel {
         }
     }
     
+    public String getFullFilename(String fileFullPath) {
+        Path p = Paths.get(fileFullPath);
+        return p.getFileName().toString();      
+    }
+    
+    public String getFullFilename() {
+        Path p = Paths.get(mp3file.getFilename());
+        return p.getFileName().toString();      
+    }
+    
+    public String getFilePath() {
+        return mp3file.getFilename();
+    }
+    
+    public int getId() {
+        return id;
+    }
     public void enableEdit(boolean b) {
         editable = b;
         
@@ -449,7 +466,7 @@ public class FilePanel extends javax.swing.JPanel {
         toggleEditTextField(artist, b);
         toggleEditTextField(album, b);
         toggleEditTextField(year, b);
-        toggleEditTextField(genre, b);
+        //toggleEditTextField(genre, b);
         toggleEditTextField(composer, b);
         toggleEditTextField(publisher, b);
         toggleEditTextField(originalArtist, b);
@@ -501,7 +518,7 @@ public class FilePanel extends javax.swing.JPanel {
             }
             
             if(path != null) {
-                setFile(new File(path));
+                setFile(new File(path), id);
             }
                 
             
@@ -546,7 +563,7 @@ public class FilePanel extends javax.swing.JPanel {
         id3v2Tag.setArtist(artist.getText());
         id3v2Tag.setAlbum(album.getText());
         id3v2Tag.setYear(year.getText());
-        id3v2Tag.setGenreDescription(genre.getText());       
+        //id3v2Tag.setGenreDescription(genre.getText());       
         id3v2Tag.setComposer(composer.getText());
         id3v2Tag.setPublisher(publisher.getText());
         id3v2Tag.setOriginalArtist(originalArtist.getText());

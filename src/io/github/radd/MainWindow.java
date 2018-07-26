@@ -215,7 +215,7 @@ public class MainWindow extends javax.swing.JFrame {
             {
                 setFilePaneHeader(" " + files[fileList.getSelectedIndex()].getName());
                 //fileScrollPane.setViewportView(filePanel);
-                filePanel.setFile(files[fileList.getSelectedIndex()]);
+                filePanel.setFile(files[fileList.getSelectedIndex()], fileList.getSelectedIndex());
                 
                 filePanelContainer.removeAll();
                 filePanelContainer.revalidate();
@@ -247,7 +247,10 @@ public class MainWindow extends javax.swing.JFrame {
         editTagsBtn.setEnabled(true);
         saveFileBtn.setEnabled(false);
         cancelEditBtn.setEnabled(false);
+        
         //TODO refresh jList -> file not found
+        files[filePanel.getId()] = new File(filePanel.getFilePath());
+        model.setElementAt(filePanel.getFullFilename(), filePanel.getId());
     }//GEN-LAST:event_saveFileBtnActionPerformed
 
 
