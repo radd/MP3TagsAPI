@@ -65,7 +65,7 @@
                           <Component id="fileScrollPane" max="32767" attributes="0"/>
                           <Group type="102" attributes="0">
                               <Component id="filePaneLabel" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                              <EmptySpace min="0" pref="512" max="32767" attributes="0"/>
                           </Group>
                           <Group type="102" alignment="0" attributes="0">
                               <Component id="editTagsBtn" min="-2" max="-2" attributes="0"/>
@@ -98,7 +98,7 @@
               <EmptySpace min="-2" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" attributes="0">
-                      <Component id="fileListScrollPane" pref="290" max="32767" attributes="0"/>
+                      <Component id="fileListScrollPane" pref="409" max="32767" attributes="0"/>
                       <EmptySpace min="-2" pref="20" max="-2" attributes="0"/>
                   </Group>
                   <Group type="102" attributes="0">

@@ -2,6 +2,8 @@ package io.github.radd;
 
 import java.awt.BorderLayout;
 import java.awt.Component;
+import java.awt.Dimension;
+import java.awt.Toolkit;
 import java.io.File;
 import javax.swing.DefaultListModel;
 import javax.swing.JFileChooser;
@@ -23,7 +25,13 @@ public class MainWindow extends javax.swing.JFrame {
      */
     public MainWindow() {
         initComponents();
-        filePanel = new FilePanel();      
+        
+        //center the window
+        Dimension screen = Toolkit.getDefaultToolkit().getScreenSize();
+        this.setLocation(screen.width/2-this.getSize().width/2, screen.height/2-this.getSize().height/2);
+        
+        filePanel = new FilePanel();
+        fileScrollPane.getVerticalScrollBar().setUnitIncrement(15);
     }
 
     /**
@@ -142,7 +150,7 @@ public class MainWindow extends javax.swing.JFrame {
                             .addComponent(fileScrollPane)
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(filePaneLabel)
-                                .addGap(0, 0, Short.MAX_VALUE))
+                                .addGap(0, 512, Short.MAX_VALUE))
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(editTagsBtn)
                                 .addGap(15, 15, 15)
@@ -166,7 +174,7 @@ public class MainWindow extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(fileListScrollPane, javax.swing.GroupLayout.DEFAULT_SIZE, 290, Short.MAX_VALUE)
+                        .addComponent(fileListScrollPane, javax.swing.GroupLayout.DEFAULT_SIZE, 409, Short.MAX_VALUE)
                         .addGap(20, 20, 20))
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(fileScrollPane)
