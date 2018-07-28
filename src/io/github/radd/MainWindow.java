@@ -210,7 +210,10 @@ public class MainWindow extends javax.swing.JFrame {
             model.removeAllElements();
             for(File file : files) {
                 model.addElement(file.getName());
-
+            }
+            
+            if(files.length == 1) {
+                fileList.setSelectedIndex(0);
             }
         }    
     }//GEN-LAST:event_chooseFilesBtnMouseClicked
@@ -226,10 +229,14 @@ public class MainWindow extends javax.swing.JFrame {
                 filePanel.setFile(files[fileList.getSelectedIndex()], fileList.getSelectedIndex());
                 
                 filePanelContainer.removeAll();
+                filePanelContainer.add(filePanel);
                 filePanelContainer.revalidate();
                 filePanelContainer.repaint();
-                filePanelContainer.add(filePanel);
+                
                 editTagsBtn.setEnabled(true);
+                saveFileBtn.setEnabled(false);
+                cancelEditBtn.setEnabled(false);
+                
                 
                 //TODO scroll to top
             }

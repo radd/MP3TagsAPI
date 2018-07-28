@@ -41,7 +41,7 @@
       </Properties>
       <Constraints>
         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignGridBagLayout" value="org.netbeans.modules.form.compat2.layouts.DesignGridBagLayout$GridBagConstraintsDescription">
-          <GridBagConstraints gridX="0" gridY="10" gridWidth="1" gridHeight="1" fill="0" ipadX="1" ipadY="0" insetsTop="0" insetsLeft="0" insetsBottom="0" insetsRight="0" anchor="13" weightX="0.0" weightY="0.0"/>
+          <GridBagConstraints gridX="0" gridY="12" gridWidth="1" gridHeight="1" fill="0" ipadX="1" ipadY="0" insetsTop="0" insetsLeft="0" insetsBottom="0" insetsRight="0" anchor="13" weightX="0.0" weightY="0.0"/>
         </Constraint>
       </Constraints>
     </Component>
@@ -56,7 +56,7 @@
       </Properties>
       <Constraints>
         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignGridBagLayout" value="org.netbeans.modules.form.compat2.layouts.DesignGridBagLayout$GridBagConstraintsDescription">
-          <GridBagConstraints gridX="0" gridY="12" gridWidth="1" gridHeight="1" fill="0" ipadX="1" ipadY="0" insetsTop="0" insetsLeft="0" insetsBottom="0" insetsRight="0" anchor="13" weightX="0.0" weightY="0.0"/>
+          <GridBagConstraints gridX="0" gridY="14" gridWidth="1" gridHeight="1" fill="0" ipadX="1" ipadY="0" insetsTop="0" insetsLeft="0" insetsBottom="0" insetsRight="0" anchor="13" weightX="0.0" weightY="0.0"/>
         </Constraint>
       </Constraints>
     </Component>
@@ -71,7 +71,7 @@
       </Properties>
       <Constraints>
         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignGridBagLayout" value="org.netbeans.modules.form.compat2.layouts.DesignGridBagLayout$GridBagConstraintsDescription">
-          <GridBagConstraints gridX="0" gridY="8" gridWidth="1" gridHeight="1" fill="0" ipadX="1" ipadY="0" insetsTop="0" insetsLeft="0" insetsBottom="0" insetsRight="0" anchor="13" weightX="0.0" weightY="0.0"/>
+          <GridBagConstraints gridX="0" gridY="10" gridWidth="1" gridHeight="1" fill="0" ipadX="1" ipadY="0" insetsTop="0" insetsLeft="0" insetsBottom="0" insetsRight="0" anchor="13" weightX="0.0" weightY="0.0"/>
         </Constraint>
       </Constraints>
     </Component>
@@ -86,7 +86,7 @@
       </Properties>
       <Constraints>
         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignGridBagLayout" value="org.netbeans.modules.form.compat2.layouts.DesignGridBagLayout$GridBagConstraintsDescription">
-          <GridBagConstraints gridX="0" gridY="14" gridWidth="1" gridHeight="1" fill="0" ipadX="1" ipadY="0" insetsTop="0" insetsLeft="0" insetsBottom="0" insetsRight="0" anchor="13" weightX="0.0" weightY="0.0"/>
+          <GridBagConstraints gridX="0" gridY="16" gridWidth="1" gridHeight="1" fill="0" ipadX="1" ipadY="0" insetsTop="0" insetsLeft="0" insetsBottom="0" insetsRight="0" anchor="13" weightX="0.0" weightY="0.0"/>
         </Constraint>
       </Constraints>
     </Component>
@@ -101,7 +101,7 @@
       </Properties>
       <Constraints>
         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignGridBagLayout" value="org.netbeans.modules.form.compat2.layouts.DesignGridBagLayout$GridBagConstraintsDescription">
-          <GridBagConstraints gridX="0" gridY="16" gridWidth="1" gridHeight="1" fill="0" ipadX="1" ipadY="0" insetsTop="0" insetsLeft="0" insetsBottom="0" insetsRight="0" anchor="13" weightX="0.0" weightY="0.0"/>
+          <GridBagConstraints gridX="0" gridY="18" gridWidth="1" gridHeight="1" fill="0" ipadX="1" ipadY="0" insetsTop="0" insetsLeft="0" insetsBottom="0" insetsRight="0" anchor="13" weightX="0.0" weightY="0.0"/>
         </Constraint>
       </Constraints>
     </Component>
@@ -115,7 +115,7 @@
       </Properties>
       <Constraints>
         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignGridBagLayout" value="org.netbeans.modules.form.compat2.layouts.DesignGridBagLayout$GridBagConstraintsDescription">
-          <GridBagConstraints gridX="2" gridY="8" gridWidth="1" gridHeight="1" fill="0" ipadX="1" ipadY="0" insetsTop="0" insetsLeft="0" insetsBottom="0" insetsRight="0" anchor="21" weightX="0.0" weightY="0.0"/>
+          <GridBagConstraints gridX="2" gridY="10" gridWidth="1" gridHeight="1" fill="0" ipadX="1" ipadY="0" insetsTop="0" insetsLeft="0" insetsBottom="0" insetsRight="0" anchor="21" weightX="0.0" weightY="0.0"/>
         </Constraint>
       </Constraints>
     </Component>
@@ -130,7 +130,7 @@
       </Properties>
       <Constraints>
         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignGridBagLayout" value="org.netbeans.modules.form.compat2.layouts.DesignGridBagLayout$GridBagConstraintsDescription">
-          <GridBagConstraints gridX="0" gridY="0" gridWidth="1" gridHeight="1" fill="0" ipadX="1" ipadY="0" insetsTop="0" insetsLeft="0" insetsBottom="0" insetsRight="0" anchor="13" weightX="0.0" weightY="0.0"/>
+          <GridBagConstraints gridX="0" gridY="2" gridWidth="1" gridHeight="1" fill="0" ipadX="1" ipadY="0" insetsTop="0" insetsLeft="0" insetsBottom="0" insetsRight="0" anchor="13" weightX="0.0" weightY="0.0"/>
         </Constraint>
       </Constraints>
     </Component>
@@ -145,7 +145,7 @@
       </Properties>
       <Constraints>
         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignGridBagLayout" value="org.netbeans.modules.form.compat2.layouts.DesignGridBagLayout$GridBagConstraintsDescription">
-          <GridBagConstraints gridX="0" gridY="28" gridWidth="1" gridHeight="1" fill="0" ipadX="1" ipadY="0" insetsTop="0" insetsLeft="0" insetsBottom="0" insetsRight="0" anchor="13" weightX="0.0" weightY="0.0"/>
+          <GridBagConstraints gridX="0" gridY="30" gridWidth="1" gridHeight="1" fill="0" ipadX="1" ipadY="0" insetsTop="0" insetsLeft="0" insetsBottom="0" insetsRight="0" anchor="13" weightX="0.0" weightY="0.0"/>
         </Constraint>
       </Constraints>
     </Component>
@@ -159,7 +159,7 @@
       </Properties>
       <Constraints>
         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignGridBagLayout" value="org.netbeans.modules.form.compat2.layouts.DesignGridBagLayout$GridBagConstraintsDescription">
-          <GridBagConstraints gridX="2" gridY="0" gridWidth="1" gridHeight="1" fill="0" ipadX="1" ipadY="0" insetsTop="0" insetsLeft="0" insetsBottom="0" insetsRight="0" anchor="21" weightX="0.0" weightY="0.0"/>
+          <GridBagConstraints gridX="2" gridY="2" gridWidth="1" gridHeight="1" fill="0" ipadX="1" ipadY="0" insetsTop="0" insetsLeft="0" insetsBottom="0" insetsRight="0" anchor="21" weightX="0.0" weightY="0.0"/>
         </Constraint>
       </Constraints>
     </Component>
@@ -173,7 +173,7 @@
       </Properties>
       <Constraints>
         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignGridBagLayout" value="org.netbeans.modules.form.compat2.layouts.DesignGridBagLayout$GridBagConstraintsDescription">
-          <GridBagConstraints gridX="2" gridY="30" gridWidth="1" gridHeight="1" fill="0" ipadX="1" ipadY="0" insetsTop="0" insetsLeft="0" insetsBottom="0" insetsRight="0" anchor="21" weightX="0.0" weightY="0.0"/>
+          <GridBagConstraints gridX="2" gridY="32" gridWidth="1" gridHeight="1" fill="0" ipadX="1" ipadY="0" insetsTop="0" insetsLeft="0" insetsBottom="0" insetsRight="0" anchor="21" weightX="0.0" weightY="0.0"/>
         </Constraint>
       </Constraints>
     </Component>
@@ -187,7 +187,7 @@
       </Properties>
       <Constraints>
         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignGridBagLayout" value="org.netbeans.modules.form.compat2.layouts.DesignGridBagLayout$GridBagConstraintsDescription">
-          <GridBagConstraints gridX="2" gridY="12" gridWidth="1" gridHeight="1" fill="0" ipadX="1" ipadY="0" insetsTop="0" insetsLeft="0" insetsBottom="0" insetsRight="0" anchor="21" weightX="0.0" weightY="0.0"/>
+          <GridBagConstraints gridX="2" gridY="14" gridWidth="1" gridHeight="1" fill="0" ipadX="1" ipadY="0" insetsTop="0" insetsLeft="0" insetsBottom="0" insetsRight="0" anchor="21" weightX="0.0" weightY="0.0"/>
         </Constraint>
       </Constraints>
     </Component>
@@ -201,7 +201,7 @@
       </Properties>
       <Constraints>
         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignGridBagLayout" value="org.netbeans.modules.form.compat2.layouts.DesignGridBagLayout$GridBagConstraintsDescription">
-          <GridBagConstraints gridX="2" gridY="10" gridWidth="1" gridHeight="1" fill="0" ipadX="1" ipadY="0" insetsTop="0" insetsLeft="0" insetsBottom="0" insetsRight="0" anchor="21" weightX="0.0" weightY="0.0"/>
+          <GridBagConstraints gridX="2" gridY="12" gridWidth="1" gridHeight="1" fill="0" ipadX="1" ipadY="0" insetsTop="0" insetsLeft="0" insetsBottom="0" insetsRight="0" anchor="21" weightX="0.0" weightY="0.0"/>
         </Constraint>
       </Constraints>
     </Component>
@@ -215,7 +215,7 @@
       </Properties>
       <Constraints>
         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignGridBagLayout" value="org.netbeans.modules.form.compat2.layouts.DesignGridBagLayout$GridBagConstraintsDescription">
-          <GridBagConstraints gridX="2" gridY="14" gridWidth="1" gridHeight="1" fill="0" ipadX="1" ipadY="0" insetsTop="0" insetsLeft="0" insetsBottom="0" insetsRight="0" anchor="21" weightX="0.0" weightY="0.0"/>
+          <GridBagConstraints gridX="2" gridY="16" gridWidth="1" gridHeight="1" fill="0" ipadX="1" ipadY="0" insetsTop="0" insetsLeft="0" insetsBottom="0" insetsRight="0" anchor="21" weightX="0.0" weightY="0.0"/>
         </Constraint>
       </Constraints>
     </Component>
@@ -229,7 +229,7 @@
       </Properties>
       <Constraints>
         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignGridBagLayout" value="org.netbeans.modules.form.compat2.layouts.DesignGridBagLayout$GridBagConstraintsDescription">
-          <GridBagConstraints gridX="2" gridY="16" gridWidth="1" gridHeight="1" fill="0" ipadX="1" ipadY="0" insetsTop="0" insetsLeft="0" insetsBottom="0" insetsRight="0" anchor="21" weightX="0.0" weightY="0.0"/>
+          <GridBagConstraints gridX="2" gridY="18" gridWidth="1" gridHeight="1" fill="0" ipadX="1" ipadY="0" insetsTop="0" insetsLeft="0" insetsBottom="0" insetsRight="0" anchor="21" weightX="0.0" weightY="0.0"/>
         </Constraint>
       </Constraints>
     </Component>
@@ -244,7 +244,7 @@
       </Properties>
       <Constraints>
         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignGridBagLayout" value="org.netbeans.modules.form.compat2.layouts.DesignGridBagLayout$GridBagConstraintsDescription">
-          <GridBagConstraints gridX="0" gridY="26" gridWidth="1" gridHeight="1" fill="0" ipadX="1" ipadY="0" insetsTop="0" insetsLeft="0" insetsBottom="0" insetsRight="0" anchor="13" weightX="0.0" weightY="0.0"/>
+          <GridBagConstraints gridX="0" gridY="28" gridWidth="1" gridHeight="1" fill="0" ipadX="1" ipadY="0" insetsTop="0" insetsLeft="0" insetsBottom="0" insetsRight="0" anchor="13" weightX="0.0" weightY="0.0"/>
         </Constraint>
       </Constraints>
     </Component>
@@ -259,7 +259,7 @@
       </Properties>
       <Constraints>
         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignGridBagLayout" value="org.netbeans.modules.form.compat2.layouts.DesignGridBagLayout$GridBagConstraintsDescription">
-          <GridBagConstraints gridX="0" gridY="24" gridWidth="1" gridHeight="1" fill="0" ipadX="1" ipadY="0" insetsTop="0" insetsLeft="0" insetsBottom="0" insetsRight="0" anchor="13" weightX="0.0" weightY="0.0"/>
+          <GridBagConstraints gridX="0" gridY="26" gridWidth="1" gridHeight="1" fill="0" ipadX="1" ipadY="0" insetsTop="0" insetsLeft="0" insetsBottom="0" insetsRight="0" anchor="13" weightX="0.0" weightY="0.0"/>
         </Constraint>
       </Constraints>
     </Component>
@@ -274,7 +274,7 @@
       </Properties>
       <Constraints>
         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignGridBagLayout" value="org.netbeans.modules.form.compat2.layouts.DesignGridBagLayout$GridBagConstraintsDescription">
-          <GridBagConstraints gridX="0" gridY="22" gridWidth="1" gridHeight="1" fill="0" ipadX="1" ipadY="0" insetsTop="0" insetsLeft="0" insetsBottom="0" insetsRight="0" anchor="13" weightX="0.0" weightY="0.0"/>
+          <GridBagConstraints gridX="0" gridY="24" gridWidth="1" gridHeight="1" fill="0" ipadX="1" ipadY="0" insetsTop="0" insetsLeft="0" insetsBottom="0" insetsRight="0" anchor="13" weightX="0.0" weightY="0.0"/>
         </Constraint>
       </Constraints>
     </Component>
@@ -289,7 +289,7 @@
       </Properties>
       <Constraints>
         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignGridBagLayout" value="org.netbeans.modules.form.compat2.layouts.DesignGridBagLayout$GridBagConstraintsDescription">
-          <GridBagConstraints gridX="0" gridY="20" gridWidth="1" gridHeight="1" fill="0" ipadX="1" ipadY="0" insetsTop="0" insetsLeft="0" insetsBottom="0" insetsRight="0" anchor="13" weightX="0.0" weightY="0.0"/>
+          <GridBagConstraints gridX="0" gridY="22" gridWidth="1" gridHeight="1" fill="0" ipadX="1" ipadY="0" insetsTop="0" insetsLeft="0" insetsBottom="0" insetsRight="0" anchor="13" weightX="0.0" weightY="0.0"/>
         </Constraint>
       </Constraints>
     </Component>
@@ -304,7 +304,7 @@
       </Properties>
       <Constraints>
         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignGridBagLayout" value="org.netbeans.modules.form.compat2.layouts.DesignGridBagLayout$GridBagConstraintsDescription">
-          <GridBagConstraints gridX="0" gridY="30" gridWidth="1" gridHeight="1" fill="0" ipadX="1" ipadY="0" insetsTop="0" insetsLeft="0" insetsBottom="0" insetsRight="0" anchor="13" weightX="0.0" weightY="0.0"/>
+          <GridBagConstraints gridX="0" gridY="32" gridWidth="1" gridHeight="1" fill="0" ipadX="1" ipadY="0" insetsTop="0" insetsLeft="0" insetsBottom="0" insetsRight="0" anchor="13" weightX="0.0" weightY="0.0"/>
         </Constraint>
       </Constraints>
     </Component>
@@ -319,7 +319,7 @@
       </Properties>
       <Constraints>
         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignGridBagLayout" value="org.netbeans.modules.form.compat2.layouts.DesignGridBagLayout$GridBagConstraintsDescription">
-          <GridBagConstraints gridX="0" gridY="18" gridWidth="1" gridHeight="1" fill="0" ipadX="1" ipadY="0" insetsTop="0" insetsLeft="0" insetsBottom="0" insetsRight="0" anchor="13" weightX="0.0" weightY="0.0"/>
+          <GridBagConstraints gridX="0" gridY="20" gridWidth="1" gridHeight="1" fill="0" ipadX="1" ipadY="0" insetsTop="0" insetsLeft="0" insetsBottom="0" insetsRight="0" anchor="13" weightX="0.0" weightY="0.0"/>
         </Constraint>
       </Constraints>
     </Component>
@@ -333,7 +333,7 @@
       </Properties>
       <Constraints>
         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignGridBagLayout" value="org.netbeans.modules.form.compat2.layouts.DesignGridBagLayout$GridBagConstraintsDescription">
-          <GridBagConstraints gridX="2" gridY="28" gridWidth="1" gridHeight="1" fill="0" ipadX="1" ipadY="0" insetsTop="0" insetsLeft="0" insetsBottom="0" insetsRight="0" anchor="21" weightX="0.0" weightY="0.0"/>
+          <GridBagConstraints gridX="2" gridY="30" gridWidth="1" gridHeight="1" fill="0" ipadX="1" ipadY="0" insetsTop="0" insetsLeft="0" insetsBottom="0" insetsRight="0" anchor="21" weightX="0.0" weightY="0.0"/>
         </Constraint>
       </Constraints>
     </Component>
@@ -347,7 +347,7 @@
       </Properties>
       <Constraints>
         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignGridBagLayout" value="org.netbeans.modules.form.compat2.layouts.DesignGridBagLayout$GridBagConstraintsDescription">
-          <GridBagConstraints gridX="2" gridY="26" gridWidth="1" gridHeight="1" fill="0" ipadX="1" ipadY="0" insetsTop="0" insetsLeft="0" insetsBottom="0" insetsRight="0" anchor="21" weightX="0.0" weightY="0.0"/>
+          <GridBagConstraints gridX="2" gridY="28" gridWidth="1" gridHeight="1" fill="0" ipadX="1" ipadY="0" insetsTop="0" insetsLeft="0" insetsBottom="0" insetsRight="0" anchor="21" weightX="0.0" weightY="0.0"/>
         </Constraint>
       </Constraints>
     </Component>
@@ -361,7 +361,7 @@
       </Properties>
       <Constraints>
         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignGridBagLayout" value="org.netbeans.modules.form.compat2.layouts.DesignGridBagLayout$GridBagConstraintsDescription">
-          <GridBagConstraints gridX="2" gridY="24" gridWidth="1" gridHeight="1" fill="0" ipadX="1" ipadY="0" insetsTop="0" insetsLeft="0" insetsBottom="0" insetsRight="0" anchor="21" weightX="0.0" weightY="0.0"/>
+          <GridBagConstraints gridX="2" gridY="26" gridWidth="1" gridHeight="1" fill="0" ipadX="1" ipadY="0" insetsTop="0" insetsLeft="0" insetsBottom="0" insetsRight="0" anchor="21" weightX="0.0" weightY="0.0"/>
         </Constraint>
       </Constraints>
     </Component>
@@ -375,7 +375,7 @@
       </Properties>
       <Constraints>
         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignGridBagLayout" value="org.netbeans.modules.form.compat2.layouts.DesignGridBagLayout$GridBagConstraintsDescription">
-          <GridBagConstraints gridX="2" gridY="22" gridWidth="1" gridHeight="1" fill="0" ipadX="1" ipadY="0" insetsTop="0" insetsLeft="0" insetsBottom="0" insetsRight="0" anchor="21" weightX="0.0" weightY="0.0"/>
+          <GridBagConstraints gridX="2" gridY="24" gridWidth="1" gridHeight="1" fill="0" ipadX="1" ipadY="0" insetsTop="0" insetsLeft="0" insetsBottom="0" insetsRight="0" anchor="21" weightX="0.0" weightY="0.0"/>
         </Constraint>
       </Constraints>
     </Component>
@@ -389,7 +389,7 @@
       </Properties>
       <Constraints>
         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignGridBagLayout" value="org.netbeans.modules.form.compat2.layouts.DesignGridBagLayout$GridBagConstraintsDescription">
-          <GridBagConstraints gridX="2" gridY="20" gridWidth="1" gridHeight="1" fill="0" ipadX="1" ipadY="0" insetsTop="0" insetsLeft="0" insetsBottom="0" insetsRight="0" anchor="21" weightX="0.0" weightY="0.0"/>
+          <GridBagConstraints gridX="2" gridY="22" gridWidth="1" gridHeight="1" fill="0" ipadX="1" ipadY="0" insetsTop="0" insetsLeft="0" insetsBottom="0" insetsRight="0" anchor="21" weightX="0.0" weightY="0.0"/>
         </Constraint>
       </Constraints>
     </Component>
@@ -403,7 +403,7 @@
       </Properties>
       <Constraints>
         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignGridBagLayout" value="org.netbeans.modules.form.compat2.layouts.DesignGridBagLayout$GridBagConstraintsDescription">
-          <GridBagConstraints gridX="2" gridY="18" gridWidth="1" gridHeight="1" fill="0" ipadX="1" ipadY="0" insetsTop="0" insetsLeft="0" insetsBottom="0" insetsRight="0" anchor="21" weightX="0.0" weightY="0.0"/>
+          <GridBagConstraints gridX="2" gridY="20" gridWidth="1" gridHeight="1" fill="0" ipadX="1" ipadY="0" insetsTop="0" insetsLeft="0" insetsBottom="0" insetsRight="0" anchor="21" weightX="0.0" weightY="0.0"/>
         </Constraint>
       </Constraints>
     </Component>
@@ -418,7 +418,7 @@
       </Properties>
       <Constraints>
         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignGridBagLayout" value="org.netbeans.modules.form.compat2.layouts.DesignGridBagLayout$GridBagConstraintsDescription">
-          <GridBagConstraints gridX="0" gridY="6" gridWidth="1" gridHeight="1" fill="0" ipadX="1" ipadY="0" insetsTop="0" insetsLeft="0" insetsBottom="0" insetsRight="0" anchor="13" weightX="0.0" weightY="0.0"/>
+          <GridBagConstraints gridX="0" gridY="8" gridWidth="1" gridHeight="1" fill="0" ipadX="1" ipadY="0" insetsTop="0" insetsLeft="0" insetsBottom="0" insetsRight="0" anchor="13" weightX="0.0" weightY="0.0"/>
         </Constraint>
       </Constraints>
     </Component>
@@ -433,7 +433,7 @@
       </Properties>
       <Constraints>
         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignGridBagLayout" value="org.netbeans.modules.form.compat2.layouts.DesignGridBagLayout$GridBagConstraintsDescription">
-          <GridBagConstraints gridX="0" gridY="4" gridWidth="1" gridHeight="1" fill="0" ipadX="1" ipadY="0" insetsTop="0" insetsLeft="0" insetsBottom="0" insetsRight="0" anchor="13" weightX="0.0" weightY="0.0"/>
+          <GridBagConstraints gridX="0" gridY="6" gridWidth="1" gridHeight="1" fill="0" ipadX="1" ipadY="0" insetsTop="0" insetsLeft="0" insetsBottom="0" insetsRight="0" anchor="13" weightX="0.0" weightY="0.0"/>
         </Constraint>
       </Constraints>
     </Component>
@@ -447,7 +447,7 @@
       </Properties>
       <Constraints>
         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignGridBagLayout" value="org.netbeans.modules.form.compat2.layouts.DesignGridBagLayout$GridBagConstraintsDescription">
-          <GridBagConstraints gridX="2" gridY="4" gridWidth="1" gridHeight="1" fill="0" ipadX="1" ipadY="0" insetsTop="0" insetsLeft="0" insetsBottom="0" insetsRight="0" anchor="21" weightX="0.0" weightY="0.0"/>
+          <GridBagConstraints gridX="2" gridY="6" gridWidth="1" gridHeight="1" fill="0" ipadX="1" ipadY="0" insetsTop="0" insetsLeft="0" insetsBottom="0" insetsRight="0" anchor="21" weightX="0.0" weightY="0.0"/>
         </Constraint>
       </Constraints>
     </Component>
@@ -461,7 +461,7 @@
       </Properties>
       <Constraints>
         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignGridBagLayout" value="org.netbeans.modules.form.compat2.layouts.DesignGridBagLayout$GridBagConstraintsDescription">
-          <GridBagConstraints gridX="2" gridY="6" gridWidth="1" gridHeight="1" fill="0" ipadX="1" ipadY="0" insetsTop="0" insetsLeft="0" insetsBottom="0" insetsRight="0" anchor="21" weightX="0.0" weightY="0.0"/>
+          <GridBagConstraints gridX="2" gridY="8" gridWidth="1" gridHeight="1" fill="0" ipadX="1" ipadY="0" insetsTop="0" insetsLeft="0" insetsBottom="0" insetsRight="0" anchor="21" weightX="0.0" weightY="0.0"/>
         </Constraint>
       </Constraints>
     </Component>
@@ -476,7 +476,7 @@
       </Properties>
       <Constraints>
         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignGridBagLayout" value="org.netbeans.modules.form.compat2.layouts.DesignGridBagLayout$GridBagConstraintsDescription">
-          <GridBagConstraints gridX="0" gridY="2" gridWidth="1" gridHeight="1" fill="0" ipadX="1" ipadY="0" insetsTop="0" insetsLeft="0" insetsBottom="0" insetsRight="0" anchor="13" weightX="0.0" weightY="0.0"/>
+          <GridBagConstraints gridX="0" gridY="4" gridWidth="1" gridHeight="1" fill="0" ipadX="1" ipadY="0" insetsTop="0" insetsLeft="0" insetsBottom="0" insetsRight="0" anchor="13" weightX="0.0" weightY="0.0"/>
         </Constraint>
       </Constraints>
     </Component>
@@ -490,10 +490,67 @@
       </Properties>
       <Constraints>
         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignGridBagLayout" value="org.netbeans.modules.form.compat2.layouts.DesignGridBagLayout$GridBagConstraintsDescription">
-          <GridBagConstraints gridX="2" gridY="2" gridWidth="1" gridHeight="1" fill="0" ipadX="1" ipadY="0" insetsTop="0" insetsLeft="0" insetsBottom="0" insetsRight="0" anchor="21" weightX="0.0" weightY="0.0"/>
+          <GridBagConstraints gridX="2" gridY="4" gridWidth="1" gridHeight="1" fill="0" ipadX="1" ipadY="0" insetsTop="0" insetsLeft="0" insetsBottom="0" insetsRight="0" anchor="21" weightX="0.0" weightY="0.0"/>
         </Constraint>
       </Constraints>
     </Component>
+    <Component class="javax.swing.JTextField" name="coverText">
+      <Properties>
+        <Property name="editable" type="boolean" value="false"/>
+        <Property name="text" type="java.lang.String" value="Cover:"/>
+        <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
+          <Border info="null"/>
+        </Property>
+        <Property name="opaque" type="boolean" value="false"/>
+      </Properties>
+      <Constraints>
+        <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignGridBagLayout" value="org.netbeans.modules.form.compat2.layouts.DesignGridBagLayout$GridBagConstraintsDescription">
+          <GridBagConstraints gridX="0" gridY="0" gridWidth="1" gridHeight="1" fill="0" ipadX="1" ipadY="0" insetsTop="0" insetsLeft="0" insetsBottom="0" insetsRight="0" anchor="13" weightX="0.0" weightY="0.0"/>
+        </Constraint>
+      </Constraints>
+    </Component>
+    <Container class="javax.swing.JPanel" name="coverContainer">
+      <Properties>
+        <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+          <Color blue="ff" green="ff" red="ff" type="rgb"/>
+        </Property>
+        <Property name="alignmentX" type="float" value="0.0"/>
+        <Property name="alignmentY" type="float" value="0.0"/>
+        <Property name="opaque" type="boolean" value="false"/>
+      </Properties>
+      <Constraints>
+        <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignGridBagLayout" value="org.netbeans.modules.form.compat2.layouts.DesignGridBagLayout$GridBagConstraintsDescription">
+          <GridBagConstraints gridX="2" gridY="0" gridWidth="1" gridHeight="1" fill="0" ipadX="0" ipadY="0" insetsTop="0" insetsLeft="0" insetsBottom="0" insetsRight="0" anchor="21" weightX="0.0" weightY="0.0"/>
+        </Constraint>
+      </Constraints>
+
+      <Layout class="org.netbeans.modules.form.compat2.layouts.DesignFlowLayout"/>
+      <SubComponents>
+        <Component class="javax.swing.JButton" name="showCoverBtn">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Show cover"/>
+          </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="showCoverBtnActionPerformed"/>
+          </Events>
+        </Component>
+        <Component class="javax.swing.JButton" name="editCoverBtn">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Edit cover"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JTextField" name="editCoverText">
+          <Properties>
+            <Property name="editable" type="boolean" value="false"/>
+            <Property name="text" type="java.lang.String" value="File: "/>
+            <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
+              <Border info="null"/>
+            </Property>
+            <Property name="opaque" type="boolean" value="false"/>
+          </Properties>
+        </Component>
+      </SubComponents>
+    </Container>
   </SubComponents>
   <LayoutCode>
     <CodeStatement>
@@ -533,7 +590,7 @@
         <CodeExpression id="3">
           <ExpressionOrigin>
             <Value type="[I" editor="org.netbeans.modules.form.layoutsupport.delegates.GridBagLayoutSupport$IntArrayPropertyEditor">
-              <PropertyValue value="[0, 11, 0, 11, 0, 11, 0, 11, 0, 11, 0, 11, 0, 11, 0, 11, 0, 11, 0, 11, 0, 11, 0, 11, 0, 11, 0, 11, 0, 11, 0]"/>
+              <PropertyValue value="[0, 11, 0, 11, 0, 11, 0, 11, 0, 11, 0, 11, 0, 11, 0, 11, 0, 11, 0, 11, 0, 11, 0, 11, 0, 11, 0, 11, 0, 11, 0, 11, 0]"/>
             </Value>
           </ExpressionOrigin>
         </CodeExpression>
@@ -588,7 +645,7 @@
       <Parameters>
         <CodeExpression id="7">
           <ExpressionOrigin>
-            <Value type="int" value="10"/>
+            <Value type="int" value="12"/>
           </ExpressionOrigin>
         </CodeExpression>
       </Parameters>
@@ -670,7 +727,7 @@
       <Parameters>
         <CodeExpression id="13">
           <ExpressionOrigin>
-            <Value type="int" value="12"/>
+            <Value type="int" value="14"/>
           </ExpressionOrigin>
         </CodeExpression>
       </Parameters>
@@ -752,7 +809,7 @@
       <Parameters>
         <CodeExpression id="19">
           <ExpressionOrigin>
-            <Value type="int" value="8"/>
+            <Value type="int" value="10"/>
           </ExpressionOrigin>
         </CodeExpression>
       </Parameters>
@@ -834,7 +891,7 @@
       <Parameters>
         <CodeExpression id="25">
           <ExpressionOrigin>
-            <Value type="int" value="14"/>
+            <Value type="int" value="16"/>
           </ExpressionOrigin>
         </CodeExpression>
       </Parameters>
@@ -916,7 +973,7 @@
       <Parameters>
         <CodeExpression id="31">
           <ExpressionOrigin>
-            <Value type="int" value="16"/>
+            <Value type="int" value="18"/>
           </ExpressionOrigin>
         </CodeExpression>
       </Parameters>
@@ -998,7 +1055,7 @@
       <Parameters>
         <CodeExpression id="37">
           <ExpressionOrigin>
-            <Value type="int" value="8"/>
+            <Value type="int" value="10"/>
           </ExpressionOrigin>
         </CodeExpression>
       </Parameters>
@@ -1080,7 +1137,7 @@
       <Parameters>
         <CodeExpression id="43">
           <ExpressionOrigin>
-            <Value type="int" value="0"/>
+            <Value type="int" value="2"/>
           </ExpressionOrigin>
         </CodeExpression>
       </Parameters>
@@ -1162,7 +1219,7 @@
       <Parameters>
         <CodeExpression id="49">
           <ExpressionOrigin>
-            <Value type="int" value="28"/>
+            <Value type="int" value="30"/>
           </ExpressionOrigin>
         </CodeExpression>
       </Parameters>
@@ -1244,7 +1301,7 @@
       <Parameters>
         <CodeExpression id="55">
           <ExpressionOrigin>
-            <Value type="int" value="0"/>
+            <Value type="int" value="2"/>
           </ExpressionOrigin>
         </CodeExpression>
       </Parameters>
@@ -1326,7 +1383,7 @@
       <Parameters>
         <CodeExpression id="61">
           <ExpressionOrigin>
-            <Value type="int" value="30"/>
+            <Value type="int" value="32"/>
           </ExpressionOrigin>
         </CodeExpression>
       </Parameters>
@@ -1408,7 +1465,7 @@
       <Parameters>
         <CodeExpression id="67">
           <ExpressionOrigin>
-            <Value type="int" value="12"/>
+            <Value type="int" value="14"/>
           </ExpressionOrigin>
         </CodeExpression>
       </Parameters>
@@ -1490,7 +1547,7 @@
       <Parameters>
         <CodeExpression id="73">
           <ExpressionOrigin>
-            <Value type="int" value="10"/>
+            <Value type="int" value="12"/>
           </ExpressionOrigin>
         </CodeExpression>
       </Parameters>
@@ -1572,7 +1629,7 @@
       <Parameters>
         <CodeExpression id="79">
           <ExpressionOrigin>
-            <Value type="int" value="14"/>
+            <Value type="int" value="16"/>
           </ExpressionOrigin>
         </CodeExpression>
       </Parameters>
@@ -1654,7 +1711,7 @@
       <Parameters>
         <CodeExpression id="85">
           <ExpressionOrigin>
-            <Value type="int" value="16"/>
+            <Value type="int" value="18"/>
           </ExpressionOrigin>
         </CodeExpression>
       </Parameters>
@@ -1736,7 +1793,7 @@
       <Parameters>
         <CodeExpression id="91">
           <ExpressionOrigin>
-            <Value type="int" value="26"/>
+            <Value type="int" value="28"/>
           </ExpressionOrigin>
         </CodeExpression>
       </Parameters>
@@ -1818,7 +1875,7 @@
       <Parameters>
         <CodeExpression id="97">
           <ExpressionOrigin>
-            <Value type="int" value="24"/>
+            <Value type="int" value="26"/>
           </ExpressionOrigin>
         </CodeExpression>
       </Parameters>
@@ -1900,7 +1957,7 @@
       <Parameters>
         <CodeExpression id="103">
           <ExpressionOrigin>
-            <Value type="int" value="22"/>
+            <Value type="int" value="24"/>
           </ExpressionOrigin>
         </CodeExpression>
       </Parameters>
@@ -1982,7 +2039,7 @@
       <Parameters>
         <CodeExpression id="109">
           <ExpressionOrigin>
-            <Value type="int" value="20"/>
+            <Value type="int" value="22"/>
           </ExpressionOrigin>
         </CodeExpression>
       </Parameters>
@@ -2064,7 +2121,7 @@
       <Parameters>
         <CodeExpression id="115">
           <ExpressionOrigin>
-            <Value type="int" value="30"/>
+            <Value type="int" value="32"/>
           </ExpressionOrigin>
         </CodeExpression>
       </Parameters>
@@ -2146,7 +2203,7 @@
       <Parameters>
         <CodeExpression id="121">
           <ExpressionOrigin>
-            <Value type="int" value="18"/>
+            <Value type="int" value="20"/>
           </ExpressionOrigin>
         </CodeExpression>
       </Parameters>
@@ -2228,7 +2285,7 @@
       <Parameters>
         <CodeExpression id="127">
           <ExpressionOrigin>
-            <Value type="int" value="28"/>
+            <Value type="int" value="30"/>
           </ExpressionOrigin>
         </CodeExpression>
       </Parameters>
@@ -2310,7 +2367,7 @@
       <Parameters>
         <CodeExpression id="133">
           <ExpressionOrigin>
-            <Value type="int" value="26"/>
+            <Value type="int" value="28"/>
           </ExpressionOrigin>
         </CodeExpression>
       </Parameters>
@@ -2392,7 +2449,7 @@
       <Parameters>
         <CodeExpression id="139">
           <ExpressionOrigin>
-            <Value type="int" value="24"/>
+            <Value type="int" value="26"/>
           </ExpressionOrigin>
         </CodeExpression>
       </Parameters>
@@ -2474,7 +2531,7 @@
       <Parameters>
         <CodeExpression id="145">
           <ExpressionOrigin>
-            <Value type="int" value="22"/>
+            <Value type="int" value="24"/>
           </ExpressionOrigin>
         </CodeExpression>
       </Parameters>
@@ -2556,7 +2613,7 @@
       <Parameters>
         <CodeExpression id="151">
           <ExpressionOrigin>
-            <Value type="int" value="20"/>
+            <Value type="int" value="22"/>
           </ExpressionOrigin>
         </CodeExpression>
       </Parameters>
@@ -2638,7 +2695,7 @@
       <Parameters>
         <CodeExpression id="157">
           <ExpressionOrigin>
-            <Value type="int" value="18"/>
+            <Value type="int" value="20"/>
           </ExpressionOrigin>
         </CodeExpression>
       </Parameters>
@@ -2720,7 +2777,7 @@
       <Parameters>
         <CodeExpression id="163">
           <ExpressionOrigin>
-            <Value type="int" value="6"/>
+            <Value type="int" value="8"/>
           </ExpressionOrigin>
         </CodeExpression>
       </Parameters>
@@ -2802,7 +2859,7 @@
       <Parameters>
         <CodeExpression id="169">
           <ExpressionOrigin>
-            <Value type="int" value="4"/>
+            <Value type="int" value="6"/>
           </ExpressionOrigin>
         </CodeExpression>
       </Parameters>
@@ -2884,7 +2941,7 @@
       <Parameters>
         <CodeExpression id="175">
           <ExpressionOrigin>
-            <Value type="int" value="4"/>
+            <Value type="int" value="6"/>
           </ExpressionOrigin>
         </CodeExpression>
       </Parameters>
@@ -2966,7 +3023,7 @@
       <Parameters>
         <CodeExpression id="181">
           <ExpressionOrigin>
-            <Value type="int" value="6"/>
+            <Value type="int" value="8"/>
           </ExpressionOrigin>
         </CodeExpression>
       </Parameters>
@@ -3048,7 +3105,7 @@
       <Parameters>
         <CodeExpression id="187">
           <ExpressionOrigin>
-            <Value type="int" value="2"/>
+            <Value type="int" value="4"/>
           </ExpressionOrigin>
         </CodeExpression>
       </Parameters>
@@ -3130,7 +3187,7 @@
       <Parameters>
         <CodeExpression id="193">
           <ExpressionOrigin>
-            <Value type="int" value="2"/>
+            <Value type="int" value="4"/>
           </ExpressionOrigin>
         </CodeExpression>
       </Parameters>
@@ -3176,6 +3233,157 @@
           </ExpressionOrigin>
         </CodeExpression>
         <CodeExpression id="191_gridBagConstraints"/>
+      </Parameters>
+    </CodeStatement>
+    <CodeStatement>
+      <CodeExpression id="197_gridBagConstraints">
+        <CodeVariable name="gridBagConstraints"/>
+        <ExpressionOrigin>
+          <ExpressionProvider type="CodeConstructor">
+            <CodeConstructor class="java.awt.GridBagConstraints" parameterTypes=""/>
+          </ExpressionProvider>
+        </ExpressionOrigin>
+      </CodeExpression>
+      <StatementProvider type="CodeExpression">
+        <CodeExpression id="197_gridBagConstraints"/>
+      </StatementProvider>
+    </CodeStatement>
+    <CodeStatement>
+      <CodeExpression id="197_gridBagConstraints"/>
+      <StatementProvider type="CodeField">
+        <CodeField name="gridx" class="java.awt.GridBagConstraints"/>
+      </StatementProvider>
+      <Parameters>
+        <CodeExpression id="198">
+          <ExpressionOrigin>
+            <Value type="int" value="0"/>
+          </ExpressionOrigin>
+        </CodeExpression>
+      </Parameters>
+    </CodeStatement>
+    <CodeStatement>
+      <CodeExpression id="197_gridBagConstraints"/>
+      <StatementProvider type="CodeField">
+        <CodeField name="gridy" class="java.awt.GridBagConstraints"/>
+      </StatementProvider>
+      <Parameters>
+        <CodeExpression id="199">
+          <ExpressionOrigin>
+            <Value type="int" value="0"/>
+          </ExpressionOrigin>
+        </CodeExpression>
+      </Parameters>
+    </CodeStatement>
+    <CodeStatement>
+      <CodeExpression id="197_gridBagConstraints"/>
+      <StatementProvider type="CodeField">
+        <CodeField name="ipadx" class="java.awt.GridBagConstraints"/>
+      </StatementProvider>
+      <Parameters>
+        <CodeExpression id="200">
+          <ExpressionOrigin>
+            <Value type="int" value="1"/>
+          </ExpressionOrigin>
+        </CodeExpression>
+      </Parameters>
+    </CodeStatement>
+    <CodeStatement>
+      <CodeExpression id="197_gridBagConstraints"/>
+      <StatementProvider type="CodeField">
+        <CodeField name="anchor" class="java.awt.GridBagConstraints"/>
+      </StatementProvider>
+      <Parameters>
+        <CodeExpression id="201">
+          <ExpressionOrigin>
+            <Value type="int" value="13"/>
+          </ExpressionOrigin>
+        </CodeExpression>
+      </Parameters>
+    </CodeStatement>
+    <CodeStatement>
+      <CodeExpression id="4"/>
+      <StatementProvider type="CodeMethod">
+        <CodeMethod name="add" class="java.awt.Container" parameterTypes="java.awt.Component, java.lang.Object"/>
+      </StatementProvider>
+      <Parameters>
+        <CodeExpression id="202_coverText">
+          <CodeVariable name="coverText" type="8194" declaredType="javax.swing.JTextField"/>
+          <ExpressionOrigin>
+            <ExpressionProvider type="ComponentRef">
+              <ComponentRef name="coverText"/>
+            </ExpressionProvider>
+          </ExpressionOrigin>
+        </CodeExpression>
+        <CodeExpression id="197_gridBagConstraints"/>
+      </Parameters>
+    </CodeStatement>
+    <CodeStatement>
+      <CodeExpression id="203_gridBagConstraints">
+        <CodeVariable name="gridBagConstraints"/>
+        <ExpressionOrigin>
+          <ExpressionProvider type="CodeConstructor">
+            <CodeConstructor class="java.awt.GridBagConstraints" parameterTypes=""/>
+          </ExpressionProvider>
+        </ExpressionOrigin>
+      </CodeExpression>
+      <StatementProvider type="CodeExpression">
+        <CodeExpression id="203_gridBagConstraints"/>
+      </StatementProvider>
+    </CodeStatement>
+    <CodeStatement>
+      <CodeExpression id="203_gridBagConstraints"/>
+      <StatementProvider type="CodeField">
+        <CodeField name="gridx" class="java.awt.GridBagConstraints"/>
+      </StatementProvider>
+      <Parameters>
+        <CodeExpression id="204">
+          <ExpressionOrigin>
+            <Value type="int" value="2"/>
+          </ExpressionOrigin>
+        </CodeExpression>
+      </Parameters>
+    </CodeStatement>
+    <CodeStatement>
+      <CodeExpression id="203_gridBagConstraints"/>
+      <StatementProvider type="CodeField">
+        <CodeField name="gridy" class="java.awt.GridBagConstraints"/>
+      </StatementProvider>
+      <Parameters>
+        <CodeExpression id="205">
+          <ExpressionOrigin>
+            <Value type="int" value="0"/>
+          </ExpressionOrigin>
+        </CodeExpression>
+      </Parameters>
+    </CodeStatement>
+    <CodeStatement>
+      <CodeExpression id="203_gridBagConstraints"/>
+      <StatementProvider type="CodeField">
+        <CodeField name="anchor" class="java.awt.GridBagConstraints"/>
+      </StatementProvider>
+      <Parameters>
+        <CodeExpression id="206">
+          <ExpressionOrigin>
+            <Value type="int" value="21"/>
+          </ExpressionOrigin>
+        </CodeExpression>
+      </Parameters>
+    </CodeStatement>
+    <CodeStatement>
+      <CodeExpression id="4"/>
+      <StatementProvider type="CodeMethod">
+        <CodeMethod name="add" class="java.awt.Container" parameterTypes="java.awt.Component, java.lang.Object"/>
+      </StatementProvider>
+      <Parameters>
+        <CodeExpression id="207_coverContainer">
+          <CodeVariable name="coverContainer" type="8194" declaredType="javax.swing.JPanel"/>
+          <ExpressionOrigin>
+            <ExpressionProvider type="ComponentRef">
+              <ComponentRef name="coverContainer"/>
+            </ExpressionProvider>
+          </ExpressionOrigin>
+        </CodeExpression>
+        <CodeExpression id="203_gridBagConstraints"/>
       </Parameters>
     </CodeStatement>
   </LayoutCode>
