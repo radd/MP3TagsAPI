@@ -26,6 +26,8 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.text.DecimalFormat;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.Random;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -596,13 +598,22 @@ public class FilePanel extends javax.swing.JPanel {
     }
 
     private void setInfo() {
+        
+        showCoverBtn.setEnabled(false);
+        showCoverBtn.setVisible(true);
+        showNewCoverBtn.setVisible(false);
+        chooseCoverBtn.setVisible(false);
+        editCoverText.setVisible(false);
+        editCoverText.setText("");
+        
+        filename.setText(getFilename(mp3file.getFilename()));
+        size.setText(getFileSize());
+        length.setText(formatSeconds(mp3file.getLengthInSeconds()));
+        bitRate.setText(mp3file.getBitrate() + " kbps");
+    
         if (mp3file != null && mp3file.hasId3v2Tag()) {
             ID3v2 id3v2Tag = mp3file.getId3v2Tag();
-
-            filename.setText(getFilename(mp3file.getFilename()));
-            size.setText(getFileSize());
-            length.setText(formatSeconds(mp3file.getLengthInSeconds()));
-            bitRate.setText(mp3file.getBitrate() + " kbps");
+            
             title.setText(id3v2Tag.getTitle());
             artist.setText(id3v2Tag.getArtist());
             album.setText(id3v2Tag.getAlbum());
@@ -618,13 +629,24 @@ public class FilePanel extends javax.swing.JPanel {
             
             //has cover
             showCoverBtn.setEnabled((id3v2Tag.getAlbumImage() != null));
-            showCoverBtn.setVisible(true);
-            showNewCoverBtn.setVisible(false);
-            chooseCoverBtn.setVisible(false);
-            editCoverText.setVisible(false);
-            editCoverText.setText("");
-
         }
+        else
+            setEmptyTags();
+    }
+    
+    private void setEmptyTags() {
+        title.setText("");
+        artist.setText("");
+        album.setText("");
+        year.setText("");
+        genre.setText("");
+        composer.setText("");
+        publisher.setText("");
+        originalArtist.setText("");
+        albumArtist.setText("");
+        copyright.setText("");
+        url.setText("");
+        encoder.setText("");
     }
 
     private String formatSeconds(long seconds) {
@@ -699,7 +721,7 @@ public class FilePanel extends javax.swing.JPanel {
         toggleEditTextField(artist, b);
         toggleEditTextField(album, b);
         toggleEditTextField(year, b);
-        //toggleEditTextField(genre, b);
+        //toggleEditTextField(genre, b); //genre causes failure because of various ID3v2 type; ID3v2.4 allows any string, older version allows specific genre type 
         toggleEditTextField(composer, b);
         toggleEditTextField(publisher, b);
         toggleEditTextField(originalArtist, b);
@@ -740,9 +762,11 @@ public class FilePanel extends javax.swing.JPanel {
     public void saveFile() {
         if (mp3file != null) {
             String path = null;
+            File newFile = null;
+            boolean deleted = false;
             try {
-                File newFile = backUpFile();
-                deleteCurrFile();
+                newFile = backUpFile();
+                deleted = deleteCurrFile(); //delete file from current location because cannot save file with the same name in this location 
                 Mp3File mp3f = new Mp3File(newFile);
                 saveId3v2Tags(mp3f);
                 path = saveMP3File(mp3f);
@@ -756,11 +780,13 @@ public class FilePanel extends javax.swing.JPanel {
             } catch (InvalidDataException ex) {
                 Logger.getLogger(FilePanel.class.getName()).log(Level.SEVERE, null, ex);
             }
-
-            if (path != null) {
-                setFile(new File(path), id);
+            finally {
+                if (path == null && deleted)
+                    restoreFileFromBackup(newFile);
             }
-
+            
+            if (path != null)
+                setFile(new File(path), id);
         }
     }
 
@@ -769,19 +795,32 @@ public class FilePanel extends javax.swing.JPanel {
         File dir = new File(path);
         if (dir.exists() || dir.mkdirs()) {
             File source = new File(mp3file.getFilename());
-            File dest = new File(dir.getAbsolutePath() + File.separator + getFilename(mp3file.getFilename()) + "_backup_" + System.currentTimeMillis() + ".mp3");
+            String date = new SimpleDateFormat("yyyy_MM_dd_HH_mm_ss").format(new Date());
+            File dest = new File(dir.getAbsolutePath() + File.separator + getFilename(mp3file.getFilename()) + "_backup_" + date + ".mp3");
             Files.copy(source.toPath(), dest.toPath());
             return dest;
         } else {
-            throw new IOException("Folder not exist");
+            throw new IOException("Folder not exist: " + path);
         }
     }
-
-    private void deleteCurrFile() throws IOException {
-        File file = new File(mp3file.getFilename());
-        if (!file.delete()) {
-            throw new IOException("Failed to delete the file");
+    
+    private boolean restoreFileFromBackup(File file) {
+        boolean restored = false;
+        if(file != null) {
+            File dest = new File(mp3file.getFilename());
+            try {
+                Files.copy(file.toPath(), dest.toPath());
+                restored = true;
+            } catch (IOException ex) {
+                Logger.getLogger(FilePanel.class.getName()).log(Level.SEVERE, null, ex);
+            }
         }
+        return restored;
+    }
+
+    private boolean deleteCurrFile() {
+        File file = new File(mp3file.getFilename());
+        return file.delete();
     }
 
     private void saveId3v2Tags(Mp3File mp3f) throws IOException {
