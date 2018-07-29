@@ -21,6 +21,7 @@ import java.util.Properties;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.BorderFactory;
+import javax.swing.DefaultListModel;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -31,8 +32,9 @@ import org.json.JSONObject;
  */
 public class YoutubePanel extends javax.swing.JPanel {
 
-    File file;
-    FilePanel filePanel;
+    private File file;
+    private FilePanel filePanel;
+    private DefaultListModel model;
     
    
     
@@ -48,7 +50,7 @@ public class YoutubePanel extends javax.swing.JPanel {
     }
     
     public YoutubePanel(FilePanel filePanel) {
-        super();
+        this();
         this.filePanel = filePanel;     
     }
     
@@ -85,6 +87,8 @@ public class YoutubePanel extends javax.swing.JPanel {
 
         searchBtn.setText("Search");
 
+        model = new DefaultListModel();
+        jList1.setModel(model);
         jList1.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
         jScrollPane1.setViewportView(jList1);
 
@@ -203,7 +207,7 @@ public class YoutubePanel extends javax.swing.JPanel {
         
         Properties properties = new Properties();
         try {
-            InputStream in = this.getClass().getResourceAsStream("/" + MP3Tags.PROPERTIES_FILENAME);
+            InputStream in = this.getClass().getResourceAsStream("" + MP3Tags.PROPERTIES_FILENAME);
             properties.load(in);
 
         } catch (IOException e) {
@@ -288,7 +292,10 @@ public class YoutubePanel extends javax.swing.JPanel {
             
         }
         
-        
+        model.removeAllElements();
+        for(String s : list) {
+            model.addElement(s);
+        }
         System.out.println(list);
         System.out.println(ids);
             
