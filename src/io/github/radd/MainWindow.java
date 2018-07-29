@@ -129,7 +129,7 @@ public class MainWindow extends javax.swing.JFrame {
         });
 
         apiPanelContainer.setBackground(new java.awt.Color(255, 255, 255));
-        apiPanelContainer.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.LEFT));
+        apiPanelContainer.setLayout(new java.awt.BorderLayout());
         apiScrollPane.setViewportView(apiPanelContainer);
 
         apiPaneLabel.setText("Fetch info from:");
@@ -318,7 +318,7 @@ public class MainWindow extends javax.swing.JFrame {
 
     private void youtubeBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_youtubeBtnActionPerformed
         apiPanelContainer.removeAll();
-        apiPanelContainer.add(youtubePanel);
+        apiPanelContainer.add(youtubePanel, BorderLayout.NORTH);
         apiPanelContainer.revalidate();
         apiPanelContainer.repaint();
         youtubePanel.search();

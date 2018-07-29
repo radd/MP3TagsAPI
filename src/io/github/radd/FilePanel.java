@@ -754,7 +754,7 @@ public class FilePanel extends javax.swing.JPanel {
     private void toggleEditTextField(JTextField f, boolean b) {
         if (b) {
             f.setEditable(b);
-            f.setColumns(50);
+            f.setColumns(40);
             f.setBorder(BorderFactory.createCompoundBorder(
                     BorderFactory.createLineBorder(Color.GRAY, 1), BorderFactory.createEmptyBorder(3, 5, 3, 5)));
         } else {
