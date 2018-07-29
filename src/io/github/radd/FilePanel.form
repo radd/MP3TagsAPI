@@ -534,15 +534,25 @@
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="showCoverBtnActionPerformed"/>
           </Events>
         </Component>
-        <Component class="javax.swing.JButton" name="editCoverBtn">
+        <Component class="javax.swing.JButton" name="showNewCoverBtn">
           <Properties>
-            <Property name="text" type="java.lang.String" value="Edit cover"/>
+            <Property name="text" type="java.lang.String" value="Show cover"/>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="showNewCoverBtnActionPerformed"/>
+          </Events>
+        </Component>
+        <Component class="javax.swing.JButton" name="chooseCoverBtn">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Choose image"/>
+          </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="chooseCoverBtnActionPerformed"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JTextField" name="editCoverText">
           <Properties>
             <Property name="editable" type="boolean" value="false"/>
-            <Property name="text" type="java.lang.String" value="File: "/>
             <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
               <Border info="null"/>
             </Property>

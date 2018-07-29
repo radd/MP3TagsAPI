@@ -19,6 +19,7 @@ import java.awt.Image;
 import java.awt.Toolkit;
 import java.awt.image.BufferedImage;
 import java.io.ByteArrayInputStream;
+import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.IOException;
 import java.nio.file.Files;
@@ -32,11 +33,13 @@ import javax.imageio.ImageIO;
 import javax.swing.BorderFactory;
 import javax.swing.ImageIcon;
 import javax.swing.JComponent;
+import javax.swing.JFileChooser;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.border.Border;
 import javax.swing.border.EmptyBorder;
+import javax.swing.filechooser.FileNameExtensionFilter;
 
 /**
  *
@@ -50,9 +53,11 @@ public class FilePanel extends javax.swing.JPanel {
     public FilePanel() {
         initComponents();
         showCoverBtn.setEnabled(false);
-        editCoverBtn.setVisible(false);
+        chooseCoverBtn.setVisible(false);
         editCoverText.setVisible(false);
+        showNewCoverBtn.setVisible(false);
         
+     
     }
 
     /**
@@ -100,7 +105,8 @@ public class FilePanel extends javax.swing.JPanel {
         coverText = new javax.swing.JTextField();
         coverContainer = new javax.swing.JPanel();
         showCoverBtn = new javax.swing.JButton();
-        editCoverBtn = new javax.swing.JButton();
+        showNewCoverBtn = new javax.swing.JButton();
+        chooseCoverBtn = new javax.swing.JButton();
         editCoverText = new javax.swing.JTextField();
 
         setBackground(new java.awt.Color(255, 255, 255));
@@ -471,11 +477,23 @@ public class FilePanel extends javax.swing.JPanel {
         });
         coverContainer.add(showCoverBtn);
 
-        editCoverBtn.setText("Edit cover");
-        coverContainer.add(editCoverBtn);
+        showNewCoverBtn.setText("Show cover");
+        showNewCoverBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                showNewCoverBtnActionPerformed(evt);
+            }
+        });
+        coverContainer.add(showNewCoverBtn);
+
+        chooseCoverBtn.setText("Choose image");
+        chooseCoverBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                chooseCoverBtnActionPerformed(evt);
+            }
+        });
+        coverContainer.add(chooseCoverBtn);
 
         editCoverText.setEditable(false);
-        editCoverText.setText("File: ");
         editCoverText.setBorder(null);
         editCoverText.setOpaque(false);
         coverContainer.add(editCoverText);
@@ -493,6 +511,26 @@ public class FilePanel extends javax.swing.JPanel {
         setCover();
     }//GEN-LAST:event_showCoverBtnActionPerformed
 
+    private void chooseCoverBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_chooseCoverBtnActionPerformed
+        JFileChooser chooser = new JFileChooser("C:\\Users\\Piotr\\Desktop");
+	FileNameExtensionFilter filter = new FileNameExtensionFilter("Image files", "jpg", "jpeg", "png");
+	chooser.setFileFilter(filter);
+        //chooser.setMultiSelectionEnabled(true);
+        int returnVal = chooser.showOpenDialog(this);
+        if (returnVal == JFileChooser.APPROVE_OPTION) {
+            File file = chooser.getSelectedFile();
+            editCoverText.setText(" " + file.getAbsolutePath());
+            coverContainer.revalidate();
+            showNewCoverBtn.setVisible(true);  
+        }
+    }//GEN-LAST:event_chooseCoverBtnActionPerformed
+
+    private void showNewCoverBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_showNewCoverBtnActionPerformed
+        Image img = getNewCover();
+        if(img != null)
+            openCover(img); 
+    }//GEN-LAST:event_showNewCoverBtnActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTextField album;
@@ -503,13 +541,13 @@ public class FilePanel extends javax.swing.JPanel {
     private javax.swing.JTextField artistText;
     private javax.swing.JTextField bitRate;
     private javax.swing.JTextField bitRateText;
+    private javax.swing.JButton chooseCoverBtn;
     private javax.swing.JTextField composer;
     private javax.swing.JTextField composerText;
     private javax.swing.JTextField copyright;
     private javax.swing.JTextField copyrightText;
     private javax.swing.JPanel coverContainer;
     private javax.swing.JTextField coverText;
-    private javax.swing.JButton editCoverBtn;
     private javax.swing.JTextField editCoverText;
     private javax.swing.JTextField encoder;
     private javax.swing.JTextField encoderText;
@@ -524,6 +562,7 @@ public class FilePanel extends javax.swing.JPanel {
     private javax.swing.JTextField publisher;
     private javax.swing.JTextField publisherText;
     private javax.swing.JButton showCoverBtn;
+    private javax.swing.JButton showNewCoverBtn;
     private javax.swing.JTextField size;
     private javax.swing.JTextField sizeText;
     private javax.swing.JTextField title;
@@ -579,6 +618,12 @@ public class FilePanel extends javax.swing.JPanel {
             
             //has cover
             showCoverBtn.setEnabled((id3v2Tag.getAlbumImage() != null));
+            showCoverBtn.setVisible(true);
+            showNewCoverBtn.setVisible(false);
+            chooseCoverBtn.setVisible(false);
+            editCoverText.setVisible(false);
+            editCoverText.setText("");
+
         }
     }
 
@@ -662,6 +707,13 @@ public class FilePanel extends javax.swing.JPanel {
         toggleEditTextField(copyright, b);
         toggleEditTextField(url, b);
         toggleEditTextField(encoder, b);
+        
+        //cover
+        showCoverBtn.setVisible(false);
+        showNewCoverBtn.setVisible(false);
+        chooseCoverBtn.setVisible(true);
+        editCoverText.setVisible(true);
+        
 
         if (!b) {
             setInfo();
@@ -732,7 +784,7 @@ public class FilePanel extends javax.swing.JPanel {
         }
     }
 
-    private void saveId3v2Tags(Mp3File mp3f) {
+    private void saveId3v2Tags(Mp3File mp3f) throws IOException {
         ID3v2 id3v2Tag;
         if (mp3f.hasId3v2Tag()) {
             id3v2Tag = mp3f.getId3v2Tag();
@@ -745,7 +797,7 @@ public class FilePanel extends javax.swing.JPanel {
         saveTags(id3v2Tag);
     }
 
-    private void saveTags(ID3v2 id3v2Tag) {
+    private void saveTags(ID3v2 id3v2Tag) throws IOException {
         id3v2Tag.setTitle(title.getText());
         id3v2Tag.setArtist(artist.getText());
         id3v2Tag.setAlbum(album.getText());
@@ -758,6 +810,31 @@ public class FilePanel extends javax.swing.JPanel {
         id3v2Tag.setCopyright(copyright.getText());
         id3v2Tag.setUrl(url.getText());
         id3v2Tag.setEncoder(encoder.getText());
+        
+        if(getNewCoverPath().length() > 0)
+            saveCover(id3v2Tag);
+    }
+    
+    private void saveCover(ID3v2 id3v2Tag) throws IOException {
+        String path = getNewCoverPath();        
+        BufferedImage img = getNewCover();
+        String type = "";
+
+        if (path.lastIndexOf(".") != -1 && path.lastIndexOf(".") != 0) {
+            type = path.substring(path.lastIndexOf(".") + 1);
+        } else 
+            throw new IOException("File path invalid");
+
+        ByteArrayOutputStream baos = new ByteArrayOutputStream();
+        ImageIO.write(img, type, baos);
+        byte[] imageInByte = baos.toByteArray();
+        baos.flush();
+        baos.close();
+        baos = null;
+        img.flush();
+        img = null;
+        
+        id3v2Tag.setAlbumImage(imageInByte, type);
     }
 
     private String saveMP3File(Mp3File mp3f) throws IOException, NotSupportedException {
@@ -786,6 +863,20 @@ public class FilePanel extends javax.swing.JPanel {
                 openCover(img);
         }        
     }
+    
+    private BufferedImage getNewCover() { 
+        BufferedImage img = null;
+        String path = getNewCoverPath();
+
+        if (path.length() > 0) {
+            try {
+                img = ImageIO.read(new File(path));
+            } catch (IOException ex) {
+                Logger.getLogger(FilePanel.class.getName()).log(Level.SEVERE, null, ex);
+            }   
+        }
+        return img;
+    }
 
     private void openCover(Image img) {    
         Image newImage;
@@ -797,8 +888,20 @@ public class FilePanel extends javax.swing.JPanel {
         CoverFrame cover = new CoverFrame(newImage);
         cover.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         cover.pack();
+        
+        Dimension screen = Toolkit.getDefaultToolkit().getScreenSize();
+        cover.setLocation(screen.width/2-cover.getSize().width/2, screen.height/2-cover.getSize().height/2);
+
         cover.setVisible(true);
         
+    }
+    
+    private String getNewCoverPath() {
+        String path = editCoverText.getText();
+        if (path.length() > 0 && path.charAt(0) == 32) { //first char is space
+            path = path.substring(1, path.length());
+        }
+        return path;
     }
     
 }
