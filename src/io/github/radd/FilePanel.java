@@ -515,7 +515,7 @@ public class FilePanel extends javax.swing.JPanel {
 
     private void chooseCoverBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_chooseCoverBtnActionPerformed
         JFileChooser chooser = new JFileChooser("C:\\Users\\Piotr\\Desktop");
-	FileNameExtensionFilter filter = new FileNameExtensionFilter("Image files", "jpg", "jpeg", "png");
+	FileNameExtensionFilter filter = new FileNameExtensionFilter("Image files: jpg, png", "jpg", "jpeg", "png");
 	chooser.setFileFilter(filter);
         //chooser.setMultiSelectionEnabled(true);
         int returnVal = chooser.showOpenDialog(this);
@@ -835,7 +835,7 @@ public class FilePanel extends javax.swing.JPanel {
 
         saveTags(id3v2Tag);
     }
-
+    
     private void saveTags(ID3v2 id3v2Tag) throws IOException {
         id3v2Tag.setTitle(title.getText());
         id3v2Tag.setArtist(artist.getText());
@@ -941,6 +941,15 @@ public class FilePanel extends javax.swing.JPanel {
             path = path.substring(1, path.length());
         }
         return path;
+    }
+    
+    
+    public String getFilename() {
+        return filename.getText();
+    }
+    
+    public String getFileTitle() {
+        return title.getText();
     }
     
 }

@@ -20,6 +20,7 @@ public class MainWindow extends javax.swing.JFrame {
 
 
     private FilePanel filePanel;
+    private YoutubePanel youtubePanel;
     /**
      * Creates new form MainWindow
      */
@@ -32,6 +33,10 @@ public class MainWindow extends javax.swing.JFrame {
         
         filePanel = new FilePanel();
         fileScrollPane.getVerticalScrollBar().setUnitIncrement(15);
+        
+        youtubePanel = new YoutubePanel(filePanel);
+        apiScrollPane.getVerticalScrollBar().setUnitIncrement(15);
+        
     }
 
     /**
@@ -54,6 +59,11 @@ public class MainWindow extends javax.swing.JFrame {
         editTagsBtn = new javax.swing.JButton();
         cancelEditBtn = new javax.swing.JButton();
         saveFileBtn = new javax.swing.JButton();
+        apiScrollPane = new javax.swing.JScrollPane();
+        apiPanelContainer = new javax.swing.JPanel();
+        apiPaneLabel = new javax.swing.JLabel();
+        youtubeBtn = new javax.swing.JButton();
+        jButton1 = new javax.swing.JButton();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
         jMenuItem1 = new javax.swing.JMenuItem();
@@ -118,6 +128,23 @@ public class MainWindow extends javax.swing.JFrame {
             }
         });
 
+        apiPanelContainer.setBackground(new java.awt.Color(255, 255, 255));
+        apiPanelContainer.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.LEFT));
+        apiScrollPane.setViewportView(apiPanelContainer);
+
+        apiPaneLabel.setText("Fetch info from:");
+
+        youtubeBtn.setText("Youtube");
+        youtubeBtn.setEnabled(false);
+        youtubeBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                youtubeBtnActionPerformed(evt);
+            }
+        });
+
+        jButton1.setText("jButton1");
+        jButton1.setEnabled(false);
+
         jMenu1.setText("File");
 
         jMenuItem1.setText("Open");
@@ -138,26 +165,36 @@ public class MainWindow extends javax.swing.JFrame {
                 .addGap(17, 17, 17)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(chooseFilesLabel)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(chooseFilesBtn))
-                    .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(fileListScrollPane, javax.swing.GroupLayout.PREFERRED_SIZE, 251, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(fileListLabel))
                         .addGap(61, 61, 61)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(fileScrollPane)
                             .addGroup(layout.createSequentialGroup()
-                                .addComponent(filePaneLabel)
-                                .addGap(0, 512, Short.MAX_VALUE))
+                                .addComponent(fileScrollPane)
+                                .addGap(45, 45, 45))
                             .addGroup(layout.createSequentialGroup()
-                                .addComponent(editTagsBtn)
-                                .addGap(15, 15, 15)
-                                .addComponent(saveFileBtn)
-                                .addGap(15, 15, 15)
-                                .addComponent(cancelEditBtn)
-                                .addGap(46, 46, 46)))))
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addComponent(editTagsBtn)
+                                        .addGap(15, 15, 15)
+                                        .addComponent(saveFileBtn)
+                                        .addGap(15, 15, 15)
+                                        .addComponent(cancelEditBtn))
+                                    .addComponent(filePaneLabel))
+                                .addGap(101, 101, 101)))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(apiPaneLabel)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(youtubeBtn)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jButton1))
+                            .addComponent(apiScrollPane, javax.swing.GroupLayout.DEFAULT_SIZE, 316, Short.MAX_VALUE)))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(chooseFilesLabel)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(chooseFilesBtn)))
                 .addGap(18, 18, 18))
         );
         layout.setVerticalGroup(
@@ -167,18 +204,23 @@ public class MainWindow extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(chooseFilesBtn)
                     .addComponent(chooseFilesLabel))
-                .addGap(34, 34, 34)
+                .addGap(30, 30, 30)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(fileListLabel)
-                    .addComponent(filePaneLabel))
+                    .addComponent(filePaneLabel)
+                    .addComponent(apiPaneLabel)
+                    .addComponent(youtubeBtn)
+                    .addComponent(jButton1))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(fileListScrollPane, javax.swing.GroupLayout.DEFAULT_SIZE, 409, Short.MAX_VALUE)
+                        .addComponent(fileListScrollPane, javax.swing.GroupLayout.DEFAULT_SIZE, 407, Short.MAX_VALUE)
                         .addGap(20, 20, 20))
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(fileScrollPane)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(fileScrollPane)
+                            .addComponent(apiScrollPane))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(editTagsBtn)
                             .addComponent(cancelEditBtn)
@@ -226,7 +268,8 @@ public class MainWindow extends javax.swing.JFrame {
             {
                 setFilePaneHeader(" " + files[fileList.getSelectedIndex()].getName());
                 //fileScrollPane.setViewportView(filePanel);
-                filePanel.setFile(files[fileList.getSelectedIndex()], fileList.getSelectedIndex());
+                File currFile = files[fileList.getSelectedIndex()];
+                filePanel.setFile(currFile, fileList.getSelectedIndex());
                 
                 filePanelContainer.removeAll();
                 filePanelContainer.add(filePanel);
@@ -237,6 +280,8 @@ public class MainWindow extends javax.swing.JFrame {
                 saveFileBtn.setEnabled(false);
                 cancelEditBtn.setEnabled(false);
                 
+                youtubeBtn.setEnabled(true);
+                youtubePanel.setFile(currFile);
                 
                 //TODO scroll to top
             }
@@ -268,8 +313,20 @@ public class MainWindow extends javax.swing.JFrame {
         model.setElementAt(filePanel.getFullFilename(), filePanel.getId());
     }//GEN-LAST:event_saveFileBtnActionPerformed
 
+    private void youtubeBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_youtubeBtnActionPerformed
+        apiPanelContainer.removeAll();
+        apiPanelContainer.add(youtubePanel);
+        apiPanelContainer.revalidate();
+        apiPanelContainer.repaint();
+        youtubePanel.search();
+
+    }//GEN-LAST:event_youtubeBtnActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel apiPaneLabel;
+    private javax.swing.JPanel apiPanelContainer;
+    private javax.swing.JScrollPane apiScrollPane;
     private javax.swing.JButton cancelEditBtn;
     private javax.swing.JButton chooseFilesBtn;
     private javax.swing.JLabel chooseFilesLabel;
@@ -283,11 +340,13 @@ public class MainWindow extends javax.swing.JFrame {
     private javax.swing.JScrollPane fileScrollPane;
     private JLabel fileHeaderLabel;
     private final String FILE_HEADER_TEXT = " Select a file...";
+    private javax.swing.JButton jButton1;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu2;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JButton saveFileBtn;
+    private javax.swing.JButton youtubeBtn;
     // End of variables declaration//GEN-END:variables
 
     private File[] files = null;

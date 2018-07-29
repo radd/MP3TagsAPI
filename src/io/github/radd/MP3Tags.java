@@ -7,7 +7,8 @@ import javax.swing.UIManager;
  * @author Piotr
  */
 public class MP3Tags {
-
+    
+    public static final String PROPERTIES_FILENAME = "mp3tagsapi.properties";
     /**
      * @param args the command line arguments
      */
