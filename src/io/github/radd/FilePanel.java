@@ -524,6 +524,7 @@ public class FilePanel extends javax.swing.JPanel {
             editCoverText.setText(" " + file.getAbsolutePath());
             coverContainer.revalidate();
             showNewCoverBtn.setVisible(true);  
+            coverFromApi = null;
         }
     }//GEN-LAST:event_chooseCoverBtnActionPerformed
 
@@ -531,6 +532,8 @@ public class FilePanel extends javax.swing.JPanel {
         Image img = getNewCover();
         if(img != null)
             openCover(img); 
+        else if(coverFromApi != null)
+            openCover(coverFromApi);
     }//GEN-LAST:event_showNewCoverBtnActionPerformed
 
 
@@ -578,6 +581,7 @@ public class FilePanel extends javax.swing.JPanel {
     private Mp3File mp3file;
     private boolean editable;
     private int id;
+    private BufferedImage coverFromApi;
 
     public void setFile(File file, int index) {
         try {
@@ -595,6 +599,7 @@ public class FilePanel extends javax.swing.JPanel {
             enableEdit(false);
         }
         setInfo();
+        coverFromApi = null;
     }
 
     private void setInfo() {
@@ -732,7 +737,7 @@ public class FilePanel extends javax.swing.JPanel {
         
         //cover
         showCoverBtn.setVisible(false);
-        showNewCoverBtn.setVisible(false);
+        showNewCoverBtn.setVisible((coverFromApi != null));
         chooseCoverBtn.setVisible(true);
         editCoverText.setVisible(true);
         
@@ -850,11 +855,14 @@ public class FilePanel extends javax.swing.JPanel {
         id3v2Tag.setUrl(url.getText());
         id3v2Tag.setEncoder(encoder.getText());
         
-        if(getNewCoverPath().length() > 0)
-            saveCover(id3v2Tag);
+        if(coverFromApi != null)
+            saveCoverFromApi(id3v2Tag);
+        else if(getNewCoverPath().length() > 0)
+            saveCoverFromPath(id3v2Tag);
+            
     }
     
-    private void saveCover(ID3v2 id3v2Tag) throws IOException {
+     private void saveCoverFromPath(ID3v2 id3v2Tag) throws IOException {
         String path = getNewCoverPath();        
         BufferedImage img = getNewCover();
         String type = "";
@@ -863,7 +871,14 @@ public class FilePanel extends javax.swing.JPanel {
             type = path.substring(path.lastIndexOf(".") + 1);
         } else 
             throw new IOException("File path invalid");
-
+         saveCover(id3v2Tag, img, type);
+    }
+     
+     private void saveCoverFromApi(ID3v2 id3v2Tag) throws IOException {
+         saveCover(id3v2Tag, coverFromApi, "jpg");
+     }
+    
+    private void saveCover(ID3v2 id3v2Tag, BufferedImage img, String type) throws IOException {
         ByteArrayOutputStream baos = new ByteArrayOutputStream();
         ImageIO.write(img, type, baos);
         byte[] imageInByte = baos.toByteArray();
@@ -950,6 +965,12 @@ public class FilePanel extends javax.swing.JPanel {
     
     public String getFileTitle() {
         return title.getText();
+    }
+    
+    public void setCoverFromApi(BufferedImage img) {
+        coverFromApi = img;
+        if(editable)
+            showNewCoverBtn.setVisible(true); 
     }
     
 }

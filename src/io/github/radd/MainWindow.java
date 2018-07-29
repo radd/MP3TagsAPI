@@ -280,6 +280,9 @@ public class MainWindow extends javax.swing.JFrame {
                 saveFileBtn.setEnabled(false);
                 cancelEditBtn.setEnabled(false);
                 
+                apiPanelContainer.removeAll();
+                apiPanelContainer.revalidate();
+                apiPanelContainer.repaint();
                 youtubeBtn.setEnabled(true);
                 youtubePanel.setFile(currFile);
                 

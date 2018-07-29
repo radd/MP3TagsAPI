@@ -8,20 +8,26 @@ package io.github.radd;
 import com.sun.jndi.toolkit.url.Uri;
 import java.awt.Color;
 import java.awt.List;
+import java.awt.image.BufferedImage;
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
+import java.net.MalformedURLException;
 import java.net.URL;
 import java.net.URLEncoder;
 import java.util.ArrayList;
 import java.util.Properties;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.imageio.ImageIO;
 import javax.swing.BorderFactory;
 import javax.swing.DefaultListModel;
+import javax.swing.Icon;
+import javax.swing.ImageIcon;
+import javax.swing.JList;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -35,7 +41,9 @@ public class YoutubePanel extends javax.swing.JPanel {
     private File file;
     private FilePanel filePanel;
     private DefaultListModel model;
-    
+    ArrayList<String> list = new ArrayList<String>();
+    ArrayList<String> ids = new ArrayList<String>();
+    private BufferedImage imageToCover;
    
     
      /**
@@ -68,13 +76,14 @@ public class YoutubePanel extends javax.swing.JPanel {
         searchQuery = new javax.swing.JTextField();
         searchBtn = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jList1 = new javax.swing.JList<>();
+        resultList = new javax.swing.JList<>();
         jPanel1 = new javax.swing.JPanel();
-        jLabel1 = new javax.swing.JLabel();
+        coverIcon = new javax.swing.JLabel();
         jCheckBox1 = new javax.swing.JCheckBox();
         jCheckBox2 = new javax.swing.JCheckBox();
         jCheckBox3 = new javax.swing.JCheckBox();
         jButton1 = new javax.swing.JButton();
+        addToEditBtn = new javax.swing.JButton();
 
         setBackground(new java.awt.Color(255, 255, 255));
 
@@ -86,11 +95,21 @@ public class YoutubePanel extends javax.swing.JPanel {
         searchQuery.setBorder(null);
 
         searchBtn.setText("Search");
+        searchBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                searchBtnActionPerformed(evt);
+            }
+        });
 
         model = new DefaultListModel();
-        jList1.setModel(model);
-        jList1.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
-        jScrollPane1.setViewportView(jList1);
+        resultList.setModel(model);
+        resultList.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
+        resultList.addListSelectionListener(new javax.swing.event.ListSelectionListener() {
+            public void valueChanged(javax.swing.event.ListSelectionEvent evt) {
+                resultListValueChanged(evt);
+            }
+        });
+        jScrollPane1.setViewportView(resultList);
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
         jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(153, 153, 153)), "Cover"));
@@ -111,13 +130,24 @@ public class YoutubePanel extends javax.swing.JPanel {
             }
         });
 
+        addToEditBtn.setText("Add to edit");
+        addToEditBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                addToEditBtnActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(coverIcon, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(10, 10, 10)
+                        .addComponent(addToEditBtn)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jCheckBox1)
@@ -130,7 +160,8 @@ public class YoutubePanel extends javax.swing.JPanel {
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(coverIcon, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(jCheckBox1)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -138,10 +169,10 @@ public class YoutubePanel extends javax.swing.JPanel {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jCheckBox3)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jButton1)
-                        .addGap(0, 0, Short.MAX_VALUE))
-                    .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap())
+                        .addComponent(jButton1)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(addToEditBtn)
+                .addContainerGap(13, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
@@ -170,7 +201,7 @@ public class YoutubePanel extends javax.swing.JPanel {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(searchQuery, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(searchBtn))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 15, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 69, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -179,19 +210,54 @@ public class YoutubePanel extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        // TODO add your handling code here:
+        
     }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void resultListValueChanged(javax.swing.event.ListSelectionEvent evt) {//GEN-FIRST:event_resultListValueChanged
+        if (!evt.getValueIsAdjusting()) { 
+            JList fileList = (JList)evt.getSource();
+            System.out.println(" " + fileList.getSelectedIndex());
+            if(fileList.getSelectedIndex() >= 0)
+            {
+                try {
+                    //coverIcon.setIcon(icon);
+                    String path = "https://i.ytimg.com/vi/" + ids.get(fileList.getSelectedIndex()) + "/default.jpg";
+                    System.out.println("Get Image from " + path);
+                    URL url = new URL(path);
+                    BufferedImage image = ImageIO.read(url);
+                    imageToCover = image;
+                    System.out.println("Load image into frame...");
+                    coverIcon.setIcon(new ImageIcon(image));
+                    coverIcon.setVisible(true);
+                    
+                } catch (MalformedURLException ex) {
+                    Logger.getLogger(YoutubePanel.class.getName()).log(Level.SEVERE, null, ex);
+                } catch (IOException ex) {
+                    Logger.getLogger(YoutubePanel.class.getName()).log(Level.SEVERE, null, ex);
+                }
+            }
+        }
+    }//GEN-LAST:event_resultListValueChanged
+
+    private void searchBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_searchBtnActionPerformed
+        search(searchQuery.getText());
+    }//GEN-LAST:event_searchBtnActionPerformed
+
+    private void addToEditBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addToEditBtnActionPerformed
+        filePanel.setCoverFromApi(imageToCover);
+    }//GEN-LAST:event_addToEditBtnActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton addToEditBtn;
+    private javax.swing.JLabel coverIcon;
     private javax.swing.JButton jButton1;
     private javax.swing.JCheckBox jCheckBox1;
     private javax.swing.JCheckBox jCheckBox2;
     private javax.swing.JCheckBox jCheckBox3;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JList<String> jList1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JList<String> resultList;
     private javax.swing.JButton searchBtn;
     private javax.swing.JTextField searchQuery;
     private javax.swing.JTextField searchQueryText;
@@ -203,7 +269,18 @@ public class YoutubePanel extends javax.swing.JPanel {
     
     private final String API_URL = "https://www.googleapis.com/youtube/v3/search?maxResults=5&part=snippet";
     
-    public void search() {
+    
+    public void search () {
+        search(filePanel.getFilename());
+    }
+    
+    public void search(String query) {
+        
+        model.removeAllElements();
+        ids.clear();
+        list.clear();
+        coverIcon.setVisible(false);
+        
         
         Properties properties = new Properties();
         try {
@@ -217,7 +294,7 @@ public class YoutubePanel extends javax.swing.JPanel {
         }
         
         String apiKey = properties.getProperty("youtube.apikey");
-        String query = filePanel.getFilename();
+        
         StringBuilder sb = null;
         
         try {
@@ -244,8 +321,7 @@ public class YoutubePanel extends javax.swing.JPanel {
             ex.printStackTrace();
         }
         
-        ArrayList<String> list = new ArrayList<String>();
-        ArrayList<String> ids = new ArrayList<String>();
+      
         
         
         if (sb != null) {
@@ -296,9 +372,18 @@ public class YoutubePanel extends javax.swing.JPanel {
         for(String s : list) {
             model.addElement(s);
         }
+        
+        searchQuery.setText(query);
+        
+        
+        if(list.size() > 0)
+            resultList.setSelectedIndex(0);
+        
         System.out.println(list);
         System.out.println(ids);
-            
+        
+        
+        
   
     }
 
