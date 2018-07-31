@@ -231,7 +231,7 @@ public class FilePanel extends javax.swing.JPanel {
         album.setOpaque(false);
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 2;
-        gridBagConstraints.gridy = 26;
+        gridBagConstraints.gridy = 16;
         gridBagConstraints.ipadx = 1;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.LINE_START;
         add(album, gridBagConstraints);
@@ -251,7 +251,7 @@ public class FilePanel extends javax.swing.JPanel {
         year.setOpaque(false);
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 2;
-        gridBagConstraints.gridy = 16;
+        gridBagConstraints.gridy = 18;
         gridBagConstraints.ipadx = 1;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.LINE_START;
         add(year, gridBagConstraints);
@@ -261,7 +261,7 @@ public class FilePanel extends javax.swing.JPanel {
         genre.setOpaque(false);
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 2;
-        gridBagConstraints.gridy = 18;
+        gridBagConstraints.gridy = 20;
         gridBagConstraints.ipadx = 1;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.LINE_START;
         add(genre, gridBagConstraints);
@@ -367,7 +367,7 @@ public class FilePanel extends javax.swing.JPanel {
         originalArtist.setOpaque(false);
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 2;
-        gridBagConstraints.gridy = 24;
+        gridBagConstraints.gridy = 26;
         gridBagConstraints.ipadx = 1;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.LINE_START;
         add(originalArtist, gridBagConstraints);
@@ -377,7 +377,7 @@ public class FilePanel extends javax.swing.JPanel {
         publisher.setOpaque(false);
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 2;
-        gridBagConstraints.gridy = 22;
+        gridBagConstraints.gridy = 24;
         gridBagConstraints.ipadx = 1;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.LINE_START;
         add(publisher, gridBagConstraints);
@@ -387,7 +387,7 @@ public class FilePanel extends javax.swing.JPanel {
         composer.setOpaque(false);
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 2;
-        gridBagConstraints.gridy = 20;
+        gridBagConstraints.gridy = 22;
         gridBagConstraints.ipadx = 1;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.LINE_START;
         add(composer, gridBagConstraints);
