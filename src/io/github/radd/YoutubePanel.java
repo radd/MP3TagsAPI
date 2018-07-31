@@ -7,7 +7,10 @@ package io.github.radd;
 
 import com.sun.jndi.toolkit.url.Uri;
 import java.awt.Color;
+import java.awt.Dimension;
+import java.awt.Image;
 import java.awt.List;
+import java.awt.Rectangle;
 import java.awt.image.BufferedImage;
 import java.io.BufferedReader;
 import java.io.File;
@@ -27,6 +30,7 @@ import javax.swing.BorderFactory;
 import javax.swing.DefaultListModel;
 import javax.swing.Icon;
 import javax.swing.ImageIcon;
+import javax.swing.JCheckBox;
 import javax.swing.JList;
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -44,6 +48,7 @@ public class YoutubePanel extends javax.swing.JPanel {
     ArrayList<String> list = new ArrayList<String>();
     ArrayList<String> ids = new ArrayList<String>();
     private BufferedImage imageToCover;
+    private BufferedImage imageToEdit;
    
     
      /**
@@ -71,8 +76,8 @@ public class YoutubePanel extends javax.swing.JPanel {
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
-        java.awt.GridBagConstraints gridBagConstraints;
 
+        coverPositionButtonGroup = new javax.swing.ButtonGroup();
         searchQueryText = new javax.swing.JTextField();
         searchQuery = new javax.swing.JTextField();
         searchBtn = new javax.swing.JButton();
@@ -80,11 +85,13 @@ public class YoutubePanel extends javax.swing.JPanel {
         resultList = new javax.swing.JList<>();
         jPanel1 = new javax.swing.JPanel();
         coverIcon = new javax.swing.JLabel();
-        jCheckBox1 = new javax.swing.JCheckBox();
-        jCheckBox2 = new javax.swing.JCheckBox();
-        jCheckBox3 = new javax.swing.JCheckBox();
-        jButton1 = new javax.swing.JButton();
+        squareCheckBox = new javax.swing.JCheckBox();
+        stripesCheckBox = new javax.swing.JCheckBox();
+        cropCoverBtn = new javax.swing.JButton();
         addToEditBtn = new javax.swing.JButton();
+        centerRadioButton = new javax.swing.JRadioButton();
+        leftRadioButton = new javax.swing.JRadioButton();
+        rightRadioButton = new javax.swing.JRadioButton();
 
         setBackground(new java.awt.Color(255, 255, 255));
 
@@ -115,19 +122,22 @@ public class YoutubePanel extends javax.swing.JPanel {
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
         jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(153, 153, 153)), "Cover"));
 
-        jCheckBox1.setText("jCheckBox1");
-        jCheckBox1.setOpaque(false);
+        squareCheckBox.setSelected(true);
+        squareCheckBox.setText("Square");
+        squareCheckBox.setOpaque(false);
+        squareCheckBox.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                squareCheckBoxItemStateChanged(evt);
+            }
+        });
 
-        jCheckBox2.setText("jCheckBox1");
-        jCheckBox2.setOpaque(false);
+        stripesCheckBox.setText("Remove black stripes");
+        stripesCheckBox.setOpaque(false);
 
-        jCheckBox3.setText("jCheckBox1");
-        jCheckBox3.setOpaque(false);
-
-        jButton1.setText("jButton1");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        cropCoverBtn.setText("Apply");
+        cropCoverBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                cropCoverBtnActionPerformed(evt);
             }
         });
 
@@ -138,40 +148,64 @@ public class YoutubePanel extends javax.swing.JPanel {
             }
         });
 
+        coverPositionButtonGroup.add(centerRadioButton);
+        centerRadioButton.setSelected(true);
+        centerRadioButton.setText("center");
+        centerRadioButton.setOpaque(false);
+
+        coverPositionButtonGroup.add(leftRadioButton);
+        leftRadioButton.setText("left");
+        leftRadioButton.setOpaque(false);
+
+        coverPositionButtonGroup.add(rightRadioButton);
+        rightRadioButton.setText("right");
+        rightRadioButton.setOpaque(false);
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addContainerGap()
+                .addGap(20, 20, 20)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(coverIcon, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(coverIcon, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(10, 10, 10)
                         .addComponent(addToEditBtn)))
-                .addGap(57, 57, 57)
+                .addGap(37, 37, 37)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jCheckBox1)
-                    .addComponent(jCheckBox2)
-                    .addComponent(jCheckBox3)
-                    .addComponent(jButton1))
-                .addGap(24, 24, 24))
+                    .addComponent(cropCoverBtn)
+                    .addComponent(stripesCheckBox)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(leftRadioButton)
+                            .addComponent(squareCheckBox))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(centerRadioButton)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(rightRadioButton)))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(coverIcon, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(jCheckBox1)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jCheckBox2)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jCheckBox3)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jButton1)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(squareCheckBox)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(centerRadioButton)
+                            .addComponent(leftRadioButton)
+                            .addComponent(rightRadioButton))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(stripesCheckBox)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(cropCoverBtn)
+                        .addGap(1, 1, 1))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(coverIcon, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                 .addComponent(addToEditBtn)
                 .addContainerGap(13, Short.MAX_VALUE))
         );
@@ -188,7 +222,7 @@ public class YoutubePanel extends javax.swing.JPanel {
                         .addComponent(searchQuery)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(searchBtn))
-                    .addComponent(jScrollPane1)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 338, Short.MAX_VALUE)
                     .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
         );
@@ -209,9 +243,9 @@ public class YoutubePanel extends javax.swing.JPanel {
         );
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        
-    }//GEN-LAST:event_jButton1ActionPerformed
+    private void cropCoverBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cropCoverBtnActionPerformed
+        editCover();
+    }//GEN-LAST:event_cropCoverBtnActionPerformed
 
     private void resultListValueChanged(javax.swing.event.ListSelectionEvent evt) {//GEN-FIRST:event_resultListValueChanged
         if (!evt.getValueIsAdjusting()) { 
@@ -221,13 +255,14 @@ public class YoutubePanel extends javax.swing.JPanel {
             {
                 try {
                     //coverIcon.setIcon(icon);
-                    String path = "https://i.ytimg.com/vi/" + ids.get(fileList.getSelectedIndex()) + "/default.jpg";
+                    String path = "https://i.ytimg.com/vi/" + ids.get(fileList.getSelectedIndex()) + "/sddefault.jpg";
                     System.out.println("Get Image from " + path);
                     URL url = new URL(path);
                     BufferedImage image = ImageIO.read(url);
                     imageToCover = image;
+                    imageToEdit = image.getSubimage(0, 0, image.getWidth(), image.getHeight());
                     System.out.println("Load image into frame...");
-                    coverIcon.setIcon(new ImageIcon(image));
+                    editCover();
                     coverIcon.setVisible(true);
                     
                 } catch (MalformedURLException ex) {
@@ -247,20 +282,37 @@ public class YoutubePanel extends javax.swing.JPanel {
         filePanel.setCoverFromApi(imageToCover);
     }//GEN-LAST:event_addToEditBtnActionPerformed
 
+    private void squareCheckBoxItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_squareCheckBoxItemStateChanged
+        JCheckBox box = (JCheckBox) evt.getSource();
+        if(box.isSelected()) {
+            centerRadioButton.setEnabled(true);
+            leftRadioButton.setEnabled(true);
+            rightRadioButton.setEnabled(true);
+        }        
+        else {
+            centerRadioButton.setEnabled(false);
+            leftRadioButton.setEnabled(false);
+            rightRadioButton.setEnabled(false);
+        }
+    }//GEN-LAST:event_squareCheckBoxItemStateChanged
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton addToEditBtn;
+    private javax.swing.JRadioButton centerRadioButton;
     private javax.swing.JLabel coverIcon;
-    private javax.swing.JButton jButton1;
-    private javax.swing.JCheckBox jCheckBox1;
-    private javax.swing.JCheckBox jCheckBox2;
-    private javax.swing.JCheckBox jCheckBox3;
+    private javax.swing.ButtonGroup coverPositionButtonGroup;
+    private javax.swing.JButton cropCoverBtn;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JRadioButton leftRadioButton;
     private javax.swing.JList<String> resultList;
+    private javax.swing.JRadioButton rightRadioButton;
     private javax.swing.JButton searchBtn;
     private javax.swing.JTextField searchQuery;
     private javax.swing.JTextField searchQueryText;
+    private javax.swing.JCheckBox squareCheckBox;
+    private javax.swing.JCheckBox stripesCheckBox;
     // End of variables declaration//GEN-END:variables
 
     public void setFile(File f) {
@@ -387,7 +439,39 @@ public class YoutubePanel extends javax.swing.JPanel {
   
     }
 
+    private void showCover() {
+        Image newImage;
+        newImage = imageToCover.getScaledInstance(100, 100, Image.SCALE_SMOOTH);
+        
+        coverIcon.setIcon(new ImageIcon(newImage));     
+    }
     
+    private void editCover() {
+        Rectangle rect = new Rectangle();
+        int h = imageToEdit.getHeight();
+        int w = imageToEdit.getWidth();
+        int offset = (stripesCheckBox.isSelected() ? 60 : 0);
+        
+        if(squareCheckBox.isSelected()) {
+            rect.width = h - 2 * offset;
+            rect.height = rect.width; 
+            rect.y = offset;
+            
+            if(centerRadioButton.isSelected())
+                rect.x = w / 2 - ((rect.width) / 2);
+            else if(rightRadioButton.isSelected())
+                rect.x = w - rect.width;
+
+        } 
+        else {
+           rect.width = w;
+           rect.height = h - 2 * offset;
+           rect.y = offset;
+        }
+
+        imageToCover = imageToEdit.getSubimage(rect.x, rect.y, rect.width, rect.height);
+        showCover();
+    }
     
     
 
